@@ -1,0 +1,1155 @@
+[2026-03-09T07:01:55.683Z] [ERROR] Google Sheets error: Requested entity was not found.
+[2026-03-09T07:07:34.096Z] [ERROR] Google Sheets error: Requested entity was not found.
+[2026-03-09T07:07:52.779Z] [ERROR] Google Sheets error: Requested entity was not found.
+[2026-03-09T07:08:01.886Z] [INFO] Asking Gemini: "How many years of React experience do you have?..."
+[2026-03-09T07:08:02.066Z] [WARN] Gemini failed: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent: [404 Not Found] models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods. — trying Groq
+[2026-03-09T07:08:02.105Z] [ERROR] Both AIs failed: 400 {"error":{"message":"The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+[2026-03-09T07:09:24.974Z] [INFO] Asking Gemini: "How many years of React experience do you have?..."
+[2026-03-09T07:09:25.511Z] [WARN] Gemini failed: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent: [429 Too Many Requests] You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash
+Please retry in 34.679894825s. [{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Learn more about Gemini API quotas","url":"https://ai.google.dev/gemini-api/docs/rate-limits"}]},{"@type":"type.googleapis.com/google.rpc.QuotaFailure","violations":[{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count","quotaId":"GenerateContentInputTokensPerModelPerMinute-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash"}},{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_requests","quotaId":"GenerateRequestsPerMinutePerProjectPerModel-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash"}},{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_requests","quotaId":"GenerateRequestsPerDayPerProjectPerModel-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash"}}]},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"34s"}] — trying Groq
+[2026-03-09T07:09:25.646Z] [INFO] Groq answered: "3"
+[2026-03-09T07:09:36.223Z] [INFO] Asking Gemini: "How many years of React experience do you have?..."
+[2026-03-09T07:09:36.391Z] [WARN] Gemini failed: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent: [429 Too Many Requests] You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash
+Please retry in 23.646379953s. [{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Learn more about Gemini API quotas","url":"https://ai.google.dev/gemini-api/docs/rate-limits"}]},{"@type":"type.googleapis.com/google.rpc.QuotaFailure","violations":[{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_requests","quotaId":"GenerateRequestsPerDayPerProjectPerModel-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash"}},{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_requests","quotaId":"GenerateRequestsPerMinutePerProjectPerModel-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash"}},{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count","quotaId":"GenerateContentInputTokensPerModelPerMinute-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash"}}]},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"23s"}] — trying Groq
+[2026-03-09T07:09:36.505Z] [INFO] Groq answered: "3"
+[2026-03-09T07:09:41.276Z] [ERROR] Google Sheets error: Requested entity was not found.
+[2026-03-09T07:11:36.065Z] [INFO] Logged to Sheets: Test Company — React Developer
+[2026-03-09T07:13:37.549Z] [INFO] === LinkedIn Bot Starting ===
+[2026-03-09T07:13:38.246Z] [INFO] Telegram notification sent
+[2026-03-09T07:13:41.523Z] [INFO] Navigating to LinkedIn login...
+[2026-03-09T07:14:04.781Z] [ERROR] Fatal error: LinkedIn is asking for verification — solve it manually first
+[2026-03-09T07:14:05.388Z] [INFO] Telegram notification sent
+[2026-03-09T07:14:05.574Z] [INFO] Screenshot saved: /Users/nelsonpinto/Desktop/Linkdinauto/linkedin-bot/screenshots/error_1773040445389.png
+[2026-03-09T07:14:05.895Z] [INFO] Telegram notification sent
+[2026-03-09T07:14:06.009Z] [INFO] === Bot finished. Applied to 0 jobs ===
+[2026-03-09T07:31:15.925Z] [INFO] === LinkedIn Bot Starting ===
+[2026-03-09T07:31:16.562Z] [INFO] Telegram notification sent
+[2026-03-09T07:31:17.924Z] [INFO] Navigating to LinkedIn login...
+[2026-03-09T07:31:29.490Z] [INFO] Logged in successfully
+[2026-03-09T07:31:29.490Z] [INFO] Searching: React Developer in India
+[2026-03-09T07:31:35.777Z] [INFO] Found 7 job listings
+[2026-03-09T07:31:36.655Z] [INFO] Applying to: Java developer
+Java developer with verification at Themesoft Inc.
+[2026-03-09T07:32:11.173Z] [INFO] Applying to: Frontend Developer [Internship]
+Frontend Developer [Internship] at Sequoia Print Pvt. Ltd.
+[2026-03-09T07:32:46.253Z] [ERROR] Fatal error: elementHandle.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not visible[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not visible[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    58 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is not visible[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+[2026-03-09T07:32:46.900Z] [INFO] Telegram notification sent
+[2026-03-09T07:32:47.135Z] [INFO] Screenshot saved: /Users/nelsonpinto/Desktop/Linkdinauto/linkedin-bot/screenshots/error_1773041566901.png
+[2026-03-09T07:32:47.487Z] [INFO] Telegram notification sent
+[2026-03-09T07:32:47.595Z] [INFO] === Bot finished. Applied to 0 jobs ===
+[2026-03-09T09:43:06.077Z] [INFO] === LinkedIn Bot Starting ===
+[2026-03-09T09:43:06.728Z] [INFO] Telegram notification sent
+[2026-03-09T09:43:08.249Z] [INFO] Navigating to LinkedIn login...
+[2026-03-09T09:43:19.798Z] [INFO] Logged in successfully
+[2026-03-09T09:43:19.799Z] [INFO] Searching: React Developer in India
+[2026-03-09T09:43:24.397Z] [INFO] Found 7 job listings
+[2026-03-09T09:43:25.032Z] [INFO] Applying to: Salesforce Developer
+Salesforce Developer with verification at Tata Consultancy Services
+[2026-03-09T09:43:37.122Z] [WARN] No Easy Apply button found for Salesforce Developer
+Salesforce Developer with verification — skipping
+[2026-03-09T09:43:37.632Z] [INFO] Applying to: Full Stack Developer Intern (paid)
+Full Stack Developer Intern (paid) at Lumenar
+[2026-03-09T09:43:49.531Z] [WARN] No Easy Apply button found for Full Stack Developer Intern (paid)
+Full Stack Developer Intern (paid) — skipping
+[2026-03-09T09:43:50.027Z] [INFO] Applying to: Senior Java Software Engineer
+Senior Java Software Engineer with verification at Worldline Global Services
+[2026-03-09T09:44:02.992Z] [WARN] No Easy Apply button found for Senior Java Software Engineer
+Senior Java Software Engineer with verification — skipping
+[2026-03-09T09:44:03.481Z] [INFO] Applying to: Senior Firmware Engineer
+Senior Firmware Engineer at ReVx Energy
+[2026-03-09T09:48:23.207Z] [INFO] === LinkedIn Bot Starting ===
+[2026-03-09T09:48:23.839Z] [INFO] Telegram notification sent
+[2026-03-09T09:48:25.094Z] [INFO] Navigating to LinkedIn login...
+[2026-03-09T09:48:58.928Z] [ERROR] Fatal error: page.fill: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#username')[22m
+
+[2026-03-09T09:48:59.643Z] [INFO] Telegram notification sent
+[2026-03-09T09:48:59.694Z] [INFO] Screenshot saved: /Users/nelsonpinto/Desktop/Linkdinauto/linkedin-bot/screenshots/error_1773049739644.png
+[2026-03-09T09:49:00.113Z] [INFO] Telegram notification sent
+[2026-03-09T09:49:00.207Z] [INFO] === Bot finished. Applied to 0 jobs ===
+[2026-03-09T09:49:07.144Z] [INFO] === LinkedIn Bot Starting ===
+[2026-03-09T09:49:07.787Z] [INFO] Telegram notification sent
+[2026-03-09T09:49:08.439Z] [INFO] Navigating to LinkedIn login...
+[2026-03-09T09:49:20.862Z] [INFO] Logged in successfully
+[2026-03-09T09:49:20.863Z] [INFO] 
+=== Searching: React Native Developer ===
+[2026-03-09T09:49:28.525Z] [INFO] Found 7 valid job listings
+[2026-03-09T09:49:29.173Z] [INFO] 
+--- Applying to: Salesforce Engineer II: 26-00673
+Salesforce Engineer II: 26-00673 with verification at Akraya, Inc. ---
+[2026-03-09T09:49:40.126Z] [INFO] Clicked Easy Apply for: Salesforce Engineer II: 26-00673
+Salesforce Engineer II: 26-00673 with verification
+[2026-03-09T09:49:48.869Z] [INFO] Screenshot saved: /Users/nelsonpinto/Desktop/Linkdinauto/linkedin-bot/screenshots/applied_Akraya, Inc._1773049788688.png
+[2026-03-09T09:49:48.870Z] [INFO] Total applied this session: 1
+[2026-03-09T09:49:49.751Z] [INFO] Logged to Sheets: Akraya, Inc. — Salesforce Engineer II: 26-00673
+Salesforce Engineer II: 26-00673 with verification
+[2026-03-09T09:49:50.460Z] [INFO] Telegram notification sent
+[2026-03-09T09:50:04.078Z] [INFO] 
+--- Applying to: C Software Engineer | $60/hr Remote
+C Software Engineer | $60/hr Remote at Crossing Hurdles ---
+[2026-03-09T09:50:21.420Z] [INFO] Clicked Easy Apply for: C Software Engineer | $60/hr Remote
+C Software Engineer | $60/hr Remote
+[2026-03-09T09:50:50.717Z] [INFO] Screenshot saved: /Users/nelsonpinto/Desktop/Linkdinauto/linkedin-bot/screenshots/applied_Crossing Hurdles_1773049850619.png
+[2026-03-09T09:50:50.719Z] [INFO] Total applied this session: 2
+[2026-03-09T09:50:51.344Z] [INFO] Logged to Sheets: Crossing Hurdles — C Software Engineer | $60/hr Remote
+C Software Engineer | $60/hr Remote
+[2026-03-09T09:50:51.996Z] [INFO] Telegram notification sent
+[2026-03-09T09:51:00.935Z] [INFO] 
+--- Applying to: Salesforce Developer
+Salesforce Developer with verification at Tata Consultancy Services ---
+[2026-03-09T09:56:20.937Z] [INFO] === LinkedIn Bot Starting ===
+[2026-03-09T09:56:22.599Z] [INFO] Telegram notification sent
+[2026-03-09T09:56:23.980Z] [INFO] Navigating to LinkedIn login...
+[2026-03-09T09:56:37.452Z] [INFO] Logged in successfully
+[2026-03-09T09:56:37.454Z] [INFO] 
+=== Searching: React Native Developer ===
+[2026-03-09T09:56:45.560Z] [INFO] Found 7 valid job listings
+[2026-03-09T09:56:45.561Z] [INFO] Skipping irrelevant job: "Java Front end
+Java Front end with verification" at Tech Mahindra
+[2026-03-09T09:56:45.561Z] [INFO] Skipping irrelevant job: "Mobile Application Developer
+Mobile Application Developer" at Wiingy
+[2026-03-09T09:56:46.249Z] [INFO] 
+--- Applying to: Full Stack Engineer
+Full Stack Engineer at Stier Solutions Inc ---
+[2026-03-09T09:56:53.960Z] [INFO] Clicked Easy Apply for: Full Stack Engineer
+Full Stack Engineer
+[2026-03-09T09:57:44.557Z] [INFO] Skipping irrelevant job: "Salesforce Engineer II: 26-00673
+Salesforce Engineer II: 26-00673 with verification" at Akraya, Inc.
+[2026-03-09T09:57:44.560Z] [INFO] Skipping irrelevant job: "Blockchain Engineer
+Blockchain Engineer" at TerraCore Minerals
+[2026-03-09T09:57:44.560Z] [INFO] Skipping irrelevant job: "C Software Engineer | $60/hr Remote
+C Software Engineer | $60/hr Remote" at Crossing Hurdles
+[2026-03-09T09:57:44.561Z] [INFO] Skipping irrelevant job: "Salesforce Developer
+Salesforce Developer with verification" at Tata Consultancy Services
+[2026-03-09T09:57:48.834Z] [INFO] 
+=== Searching: React Developer ===
+[2026-03-09T09:57:56.690Z] [INFO] Found 7 valid job listings
+[2026-03-09T09:57:56.691Z] [INFO] Skipping irrelevant job: "Wordpress Developer
+Wordpress Developer" at TheGrowwers
+[2026-03-09T09:57:56.691Z] [INFO] Skipping irrelevant job: "Java Front end
+Java Front end with verification" at Tech Mahindra
+[2026-03-09T09:57:56.692Z] [INFO] Skipping irrelevant job: "Mobile Application Developer
+Mobile Application Developer" at Wiingy
+[2026-03-09T09:57:57.267Z] [INFO] 
+--- Applying to: Full Stack Engineer
+Full Stack Engineer at Stier Solutions Inc ---
+[2026-03-09T09:58:14.318Z] [INFO] Clicked Easy Apply for: Full Stack Engineer
+Full Stack Engineer
+[2026-03-09T09:59:07.535Z] [INFO] Skipping irrelevant job: "Salesforce Engineer II: 26-00673
+Salesforce Engineer II: 26-00673 with verification" at Akraya, Inc.
+[2026-03-09T09:59:07.538Z] [INFO] Skipping irrelevant job: "Blockchain Engineer
+Blockchain Engineer" at TerraCore Minerals
+[2026-03-09T09:59:07.538Z] [INFO] Skipping irrelevant job: "C Software Engineer | $60/hr Remote
+C Software Engineer | $60/hr Remote" at Crossing Hurdles
+[2026-03-09T09:59:11.860Z] [INFO] 
+=== Searching: React JS Developer ===
+[2026-03-09T09:59:27.286Z] [INFO] Found 7 valid job listings
+[2026-03-09T09:59:27.287Z] [INFO] Skipping irrelevant job: "Wordpress Developer
+Wordpress Developer" at TheGrowwers
+[2026-03-09T09:59:27.287Z] [INFO] Skipping irrelevant job: "Mobile Application Developer
+Mobile Application Developer" at Wiingy
+[2026-03-09T09:59:27.799Z] [INFO] 
+--- Applying to: Full Stack Engineer
+Full Stack Engineer at Stier Solutions Inc ---
+[2026-03-09T09:59:45.569Z] [INFO] Clicked Easy Apply for: Full Stack Engineer
+Full Stack Engineer
+[2026-03-09T10:00:09.374Z] [WARN] No navigation button found — ending application
+[2026-03-09T10:00:09.377Z] [INFO] Skipping irrelevant job: "Salesforce Engineer II: 26-00673
+Salesforce Engineer II: 26-00673 with verification" at Akraya, Inc.
+[2026-03-09T10:00:09.377Z] [INFO] Skipping irrelevant job: "Blockchain Engineer
+Blockchain Engineer" at TerraCore Minerals
+[2026-03-09T10:00:09.377Z] [INFO] Skipping irrelevant job: "C Software Engineer | $60/hr Remote
+C Software Engineer | $60/hr Remote" at Crossing Hurdles
+[2026-03-09T10:00:09.377Z] [INFO] Skipping irrelevant job: "Salesforce Developer
+Salesforce Developer with verification" at Tata Consultancy Services
+[2026-03-09T10:00:12.802Z] [INFO] 
+=== Searching: MERN Stack Developer ===
+[2026-03-09T10:00:19.745Z] [INFO] Found 8 valid job listings
+[2026-03-09T10:00:19.746Z] [INFO] Skipping irrelevant job: "Wordpress Developer
+Wordpress Developer" at TheGrowwers
+[2026-03-09T10:00:19.746Z] [INFO] Skipping irrelevant job: "Astrology & Wellness Expert (Freelance / Consultant)
+Astrology & Wellness Expert (Freelance / Consultant)" at The Aura Tribe
+[2026-03-09T10:00:19.746Z] [INFO] Skipping irrelevant job: "Mobile Application Developer
+Mobile Application Developer" at Wiingy
+[2026-03-09T10:00:20.336Z] [INFO] 
+--- Applying to: Full Stack Engineer
+Full Stack Engineer at Stier Solutions Inc ---
+[2026-03-09T11:27:15.709Z] [INFO] === LinkedIn Bot Starting ===
+[2026-03-09T11:27:15.710Z] [INFO] Searches: 4 combinations (4 keywords × 1 cities)
+[2026-03-09T11:27:16.373Z] [INFO] Telegram notification sent
+[2026-03-09T11:27:17.906Z] [INFO] Navigating to LinkedIn login...
+[2026-03-09T11:27:31.246Z] [INFO] Logged in successfully
+[2026-03-09T11:27:31.249Z] [INFO] 
+=== Searching: "React Native Developer" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:27:39.882Z] [INFO] Found 18 job listings
+[2026-03-09T11:27:39.883Z] [INFO] Skipping irrelevant: "Angular Developer
+Angular Developer with verification"
+[2026-03-09T11:27:39.883Z] [INFO] Skipping irrelevant: "Cybersecurity Software Engineer | $70/hr Remote
+Cybersecurity Software Engineer | $70/hr Remote"
+[2026-03-09T11:27:39.883Z] [INFO] Skipping irrelevant: "Backend Engineer
+Backend Engineer"
+[2026-03-09T11:27:39.883Z] [INFO] Skipping irrelevant: "Full Stack Ruby Developer | $60/hr Remote
+Full Stack Ruby Developer | $60/hr Remote"
+[2026-03-09T11:27:39.883Z] [INFO] Skipping irrelevant: "Ruby Developer | $60/hr Remote
+Ruby Developer | $60/hr Remote"
+[2026-03-09T11:27:39.883Z] [INFO] Skipping irrelevant: "Ruby on Rails Developer | $60/hr Remote
+Ruby on Rails Developer | $60/hr Remote"
+[2026-03-09T11:27:39.883Z] [INFO] Skipping irrelevant: "Build And Release Engineer
+Build And Release Engineer"
+[2026-03-09T11:27:39.883Z] [INFO] Skipping irrelevant: "Senior Software Developer – Manufacturing Execution System (MES)
+Senior Software Developer – Manufacturing Execution System (MES)"
+[2026-03-09T11:27:39.883Z] [INFO] Skipping irrelevant: "Java Software Engineer
+Java Software Engineer with verification"
+[2026-03-09T11:27:39.883Z] [INFO] Skipping irrelevant: "One identity Developer
+One identity Developer"
+[2026-03-09T11:27:39.883Z] [INFO] Skipping irrelevant: "Senior Software Engineer
+Senior Software Engineer with verification"
+[2026-03-09T11:27:39.883Z] [INFO] Skipping irrelevant: "Associate Software Engineer
+Associate Software Engineer with verification"
+[2026-03-09T11:27:39.883Z] [INFO] Skipping irrelevant: "MERN Stack Developer
+MERN Stack Developer"
+[2026-03-09T11:27:39.884Z] [INFO] Skipping irrelevant: "Cloud Engineer (Fresher)
+Cloud Engineer (Fresher) with verification"
+[2026-03-09T11:27:39.884Z] [INFO] Skipping irrelevant: "Angular Frontend Developer
+Angular Frontend Developer"
+[2026-03-09T11:27:39.884Z] [INFO] Skipping irrelevant: "Software Engineer - Java Developer
+Software Engineer - Java Developer with verification"
+[2026-03-09T11:27:39.884Z] [INFO] Skipping irrelevant: "Junior Full Stack Engineer - AI startup
+Junior Full Stack Engineer - AI startup"
+[2026-03-09T11:27:39.884Z] [INFO] Skipping irrelevant: "Full Stack Engineer
+Full Stack Engineer"
+[2026-03-09T11:27:44.871Z] [INFO] 
+=== Searching: "React Native Engineer" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:27:52.467Z] [INFO] Found 7 job listings
+[2026-03-09T11:27:52.468Z] [INFO] Skipping irrelevant: "Angular Developer
+Angular Developer with verification"
+[2026-03-09T11:27:52.468Z] [INFO] Skipping irrelevant: "Cybersecurity Software Engineer | $70/hr Remote
+Cybersecurity Software Engineer | $70/hr Remote"
+[2026-03-09T11:27:52.468Z] [INFO] Skipping irrelevant: "Software Security Engineer | $70/hr Remote
+Software Security Engineer | $70/hr Remote"
+[2026-03-09T11:27:52.468Z] [INFO] Skipping irrelevant: "Backend Engineer
+Backend Engineer"
+[2026-03-09T11:27:52.468Z] [INFO] Skipping irrelevant: "Full Stack Ruby Developer | $60/hr Remote
+Full Stack Ruby Developer | $60/hr Remote"
+[2026-03-09T11:27:52.468Z] [INFO] Skipping irrelevant: "Ruby Developer | $60/hr Remote
+Ruby Developer | $60/hr Remote"
+[2026-03-09T11:27:52.468Z] [INFO] Skipping irrelevant: "Ruby on Rails Developer | $60/hr Remote
+Ruby on Rails Developer | $60/hr Remote"
+[2026-03-09T11:27:55.564Z] [INFO] 
+=== Searching: "Mobile Developer React Native" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:28:28.107Z] [INFO] === LinkedIn Bot Starting ===
+[2026-03-09T11:28:28.107Z] [INFO] Searches: 4 combinations (4 keywords × 1 cities)
+[2026-03-09T11:28:28.817Z] [INFO] Telegram notification sent
+[2026-03-09T11:28:29.551Z] [INFO] Navigating to LinkedIn login...
+[2026-03-09T11:28:44.240Z] [INFO] Logged in successfully
+[2026-03-09T11:28:44.242Z] [INFO] 
+=== Searching: "React Native Developer" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:28:53.300Z] [INFO] Found 19 job listings
+[2026-03-09T11:28:53.301Z] [INFO] Skipping irrelevant: "Angular Developer
+Angular Developer with verification"
+[2026-03-09T11:28:53.302Z] [INFO] Skipping irrelevant: "Cybersecurity Software Engineer | $70/hr Remote
+Cybersecurity Software Engineer | $70/hr Remote"
+[2026-03-09T11:28:53.302Z] [INFO] Skipping irrelevant: "Backend Engineer
+Backend Engineer"
+[2026-03-09T11:28:53.302Z] [INFO] Skipping irrelevant: "Full Stack Ruby Developer | $60/hr Remote
+Full Stack Ruby Developer | $60/hr Remote"
+[2026-03-09T11:28:53.302Z] [INFO] Skipping irrelevant: "Ruby Developer | $60/hr Remote
+Ruby Developer | $60/hr Remote"
+[2026-03-09T11:28:53.302Z] [INFO] Skipping irrelevant: "Ruby on Rails Developer | $60/hr Remote
+Ruby on Rails Developer | $60/hr Remote"
+[2026-03-09T11:28:53.302Z] [INFO] Skipping irrelevant: "Blockchain Engineer
+Blockchain Engineer"
+[2026-03-09T11:28:53.302Z] [INFO] Skipping irrelevant: "C Software Engineer | $60/hr Remote
+C Software Engineer | $60/hr Remote"
+[2026-03-09T11:28:53.302Z] [INFO] Skipping irrelevant: "CAD QA Engineer
+CAD QA Engineer with verification"
+[2026-03-09T11:28:53.302Z] [INFO] Skipping irrelevant: "Build And Release Engineer
+Build And Release Engineer"
+[2026-03-09T11:28:53.303Z] [INFO] Skipping irrelevant: "Senior Software Developer – Manufacturing Execution System (MES)
+Senior Software Developer – Manufacturing Execution System (MES)"
+[2026-03-09T11:28:53.303Z] [INFO] Skipping irrelevant: "Java Software Engineer
+Java Software Engineer with verification"
+[2026-03-09T11:28:53.303Z] [INFO] Skipping irrelevant: "One identity Developer
+One identity Developer"
+[2026-03-09T11:28:53.303Z] [INFO] Skipping irrelevant: "Senior Software Engineer
+Senior Software Engineer with verification"
+[2026-03-09T11:28:53.303Z] [INFO] Skipping irrelevant: "Associate Software Engineer
+Associate Software Engineer with verification"
+[2026-03-09T11:28:53.303Z] [INFO] Skipping irrelevant: "MERN Stack Developer
+MERN Stack Developer"
+[2026-03-09T11:28:53.303Z] [INFO] Skipping irrelevant: "Cloud Engineer (Fresher)
+Cloud Engineer (Fresher) with verification"
+[2026-03-09T11:28:53.303Z] [INFO] Skipping irrelevant: "Angular Frontend Developer
+Angular Frontend Developer"
+[2026-03-09T11:28:53.304Z] [INFO] Skipping irrelevant: "Software Engineer - Java Developer
+Software Engineer - Java Developer with verification"
+[2026-03-09T11:28:56.379Z] [INFO] 
+=== Searching: "React Native Engineer" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:29:04.623Z] [INFO] Found 7 job listings
+[2026-03-09T11:29:04.624Z] [INFO] Skipping irrelevant: "Angular Developer
+Angular Developer with verification"
+[2026-03-09T11:29:04.625Z] [INFO] Skipping irrelevant: "Cybersecurity Software Engineer | $70/hr Remote
+Cybersecurity Software Engineer | $70/hr Remote"
+[2026-03-09T11:29:04.625Z] [INFO] Skipping irrelevant: "Backend Engineer
+Backend Engineer"
+[2026-03-09T11:29:04.625Z] [INFO] Skipping irrelevant: "Full Stack Ruby Developer | $60/hr Remote
+Full Stack Ruby Developer | $60/hr Remote"
+[2026-03-09T11:29:04.625Z] [INFO] Skipping irrelevant: "Ruby Developer | $60/hr Remote
+Ruby Developer | $60/hr Remote"
+[2026-03-09T11:29:04.625Z] [INFO] Skipping irrelevant: "Ruby on Rails Developer | $60/hr Remote
+Ruby on Rails Developer | $60/hr Remote"
+[2026-03-09T11:29:04.626Z] [INFO] Skipping irrelevant: "Blockchain Engineer
+Blockchain Engineer"
+[2026-03-09T11:29:08.140Z] [INFO] 
+=== Searching: "Mobile Developer React Native" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:29:15.383Z] [INFO] Found 7 job listings
+[2026-03-09T11:29:15.383Z] [INFO] Skipping irrelevant: "Angular Developer
+Angular Developer with verification"
+[2026-03-09T11:29:15.384Z] [INFO] Skipping irrelevant: "Cybersecurity Software Engineer | $70/hr Remote
+Cybersecurity Software Engineer | $70/hr Remote"
+[2026-03-09T11:29:15.384Z] [INFO] Skipping irrelevant: "Backend Engineer
+Backend Engineer"
+[2026-03-09T11:29:15.384Z] [INFO] Skipping irrelevant: "Full Stack Ruby Developer | $60/hr Remote
+Full Stack Ruby Developer | $60/hr Remote"
+[2026-03-09T11:29:15.384Z] [INFO] Skipping irrelevant: "Ruby Developer | $60/hr Remote
+Ruby Developer | $60/hr Remote"
+[2026-03-09T11:29:15.384Z] [INFO] Skipping irrelevant: "Ruby on Rails Developer | $60/hr Remote
+Ruby on Rails Developer | $60/hr Remote"
+[2026-03-09T11:29:15.384Z] [INFO] Skipping irrelevant: "Blockchain Engineer
+Blockchain Engineer"
+[2026-03-09T11:29:19.799Z] [INFO] 
+=== Searching: "iOS Android React Native" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:29:28.168Z] [INFO] Found 7 job listings
+[2026-03-09T11:29:28.169Z] [INFO] Skipping irrelevant: "Angular Developer
+Angular Developer with verification"
+[2026-03-09T11:29:28.169Z] [INFO] Skipping irrelevant: "Architect
+Architect"
+[2026-03-09T11:29:28.169Z] [INFO] Skipping irrelevant: "Cybersecurity Software Engineer | $70/hr Remote
+Cybersecurity Software Engineer | $70/hr Remote"
+[2026-03-09T11:29:28.169Z] [INFO] Skipping irrelevant: "Backend Engineer
+Backend Engineer"
+[2026-03-09T11:29:28.169Z] [INFO] Skipping irrelevant: "Ruby on Rails Developer | $60/hr Remote
+Ruby on Rails Developer | $60/hr Remote"
+[2026-03-09T11:29:28.169Z] [INFO] Skipping irrelevant: "AI Video Creator
+AI Video Creator"
+[2026-03-09T11:29:28.169Z] [INFO] Skipping irrelevant: "C Software Engineer | $60/hr Remote
+C Software Engineer | $60/hr Remote"
+[2026-03-09T11:29:32.741Z] [INFO] Telegram notification sent
+[2026-03-09T11:29:32.847Z] [INFO] 
+=== Done. Applied to 0 jobs this session ===
+[2026-03-09T11:30:51.009Z] [INFO] === LinkedIn Bot Starting ===
+[2026-03-09T11:30:51.010Z] [INFO] Searches: 4 combinations (4 keywords × 1 cities)
+[2026-03-09T11:30:51.866Z] [INFO] Telegram notification sent
+[2026-03-09T11:30:53.234Z] [INFO] Navigating to LinkedIn login...
+[2026-03-09T11:31:07.592Z] [INFO] Logged in successfully
+[2026-03-09T11:31:07.593Z] [INFO] 
+=== Searching: "React Native Developer" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:31:15.104Z] [INFO] Found 7 job listings
+[2026-03-09T11:31:15.105Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T11:31:15.105Z] [INFO] Skipping irrelevant: "Software Engineer | $80/hr Remote
+Software Engineer | $80/hr Remote"
+[2026-03-09T11:31:15.105Z] [INFO] Skipping irrelevant: "Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG
+Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG"
+[2026-03-09T11:31:15.105Z] [INFO] Skipping irrelevant: "Frontend Developer
+Frontend Developer"
+[2026-03-09T11:31:15.105Z] [INFO] Skipping irrelevant: "Remote Software Engineer (Ruby)
+Remote Software Engineer (Ruby) with verification"
+[2026-03-09T11:31:15.105Z] [INFO] Skipping irrelevant: "Associate Software Engineer
+Associate Software Engineer with verification"
+[2026-03-09T11:31:16.036Z] [INFO] 
+--- Applying: Android Developer (SDE1)
+Android Developer (SDE1) with verification at Chalo (Navi Mumbai, Maharashtra, India (On-site)) ---
+[2026-03-09T11:31:33.441Z] [INFO] Clicked Easy Apply: Android Developer (SDE1)
+Android Developer (SDE1) with verification
+[2026-03-09T11:32:27.448Z] [INFO] 
+=== Searching: "React Native Engineer" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:32:35.521Z] [ERROR] Fatal error: page.evaluate: Target page, context or browser has been closed
+[2026-03-09T11:32:36.415Z] [INFO] Telegram notification sent
+[2026-03-09T11:32:36.749Z] [INFO] Telegram notification sent
+[2026-03-09T11:32:36.825Z] [INFO] 
+=== Done. Applied to 0 jobs this session ===
+[2026-03-09T11:32:55.834Z] [INFO] === LinkedIn Bot Starting ===
+[2026-03-09T11:32:55.835Z] [INFO] Searches: 4 combinations (4 keywords × 1 cities)
+[2026-03-09T11:32:56.461Z] [INFO] Telegram notification sent
+[2026-03-09T11:32:57.227Z] [INFO] Navigating to LinkedIn login...
+[2026-03-09T11:33:09.355Z] [INFO] Logged in successfully
+[2026-03-09T11:33:09.356Z] [INFO] 
+=== Searching: "React Native Developer" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:33:17.341Z] [INFO] Found 7 job listings
+[2026-03-09T11:33:17.342Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T11:33:17.342Z] [INFO] Skipping irrelevant: "Software Engineer | $80/hr Remote
+Software Engineer | $80/hr Remote"
+[2026-03-09T11:33:17.343Z] [INFO] Skipping irrelevant: "Software Engineer (Remote)
+Software Engineer (Remote)"
+[2026-03-09T11:33:17.343Z] [INFO] Skipping irrelevant: "Frontend Developer
+Frontend Developer"
+[2026-03-09T11:33:17.343Z] [INFO] Skipping irrelevant: "Remote Software Engineer (JavaScript)
+Remote Software Engineer (JavaScript) with verification"
+[2026-03-09T11:33:17.343Z] [INFO] Skipping irrelevant: "Associate Software Engineer
+Associate Software Engineer with verification"
+[2026-03-09T11:33:17.945Z] [INFO] 
+--- Applying: Android Developer (SDE1)
+Android Developer (SDE1) with verification at Chalo (Navi Mumbai, Maharashtra, India (On-site)) ---
+[2026-03-09T11:33:39.602Z] [INFO] Clicked Easy Apply: Android Developer (SDE1)
+Android Developer (SDE1) with verification
+[2026-03-09T11:34:40.136Z] [INFO] 
+=== Searching: "React Native Engineer" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:34:47.621Z] [INFO] Found 7 job listings
+[2026-03-09T11:34:47.622Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T11:34:47.622Z] [INFO] Skipping irrelevant: "Software Engineer | $80/hr Remote
+Software Engineer | $80/hr Remote"
+[2026-03-09T11:34:47.623Z] [INFO] Skipping irrelevant: "Software Engineer (Remote)
+Software Engineer (Remote)"
+[2026-03-09T11:34:47.623Z] [INFO] Skipping irrelevant: "R&D Systems Engineer
+R&D Systems Engineer"
+[2026-03-09T11:34:47.623Z] [INFO] Skipping irrelevant: "Frontend Developer
+Frontend Developer"
+[2026-03-09T11:34:47.623Z] [INFO] Skipping irrelevant: "Associate Software Engineer
+Associate Software Engineer with verification"
+[2026-03-09T11:34:47.623Z] [INFO] Skipping irrelevant: "Software Engineer
+Software Engineer with verification"
+[2026-03-09T11:34:53.514Z] [INFO] 
+=== Searching: "Mobile Developer React Native" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:35:02.888Z] [INFO] Found 7 job listings
+[2026-03-09T11:35:02.888Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T11:35:02.888Z] [INFO] Skipping irrelevant: "Software Engineer | $80/hr Remote
+Software Engineer | $80/hr Remote"
+[2026-03-09T11:35:02.888Z] [INFO] Skipping irrelevant: "Software Engineer (Remote)
+Software Engineer (Remote)"
+[2026-03-09T11:35:02.889Z] [INFO] Skipping irrelevant: "Frontend Developer
+Frontend Developer"
+[2026-03-09T11:35:02.889Z] [INFO] Skipping irrelevant: "Associate Software Engineer
+Associate Software Engineer with verification"
+[2026-03-09T11:35:02.889Z] [INFO] Skipping irrelevant: "Software Engineer
+Software Engineer with verification"
+[2026-03-09T11:35:02.889Z] [INFO] Skipping irrelevant: "Backend Engineer
+Backend Engineer"
+[2026-03-09T11:35:07.125Z] [INFO] 
+=== Searching: "iOS Android React Native" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:35:14.289Z] [INFO] Found 7 job listings
+[2026-03-09T11:35:14.290Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T11:35:14.290Z] [INFO] Skipping irrelevant: "Software Engineer | $80/hr Remote
+Software Engineer | $80/hr Remote"
+[2026-03-09T11:35:14.290Z] [INFO] Skipping irrelevant: "R&D Systems Engineer
+R&D Systems Engineer"
+[2026-03-09T11:35:14.290Z] [INFO] Skipping irrelevant: "Software Engineer (Remote)
+Software Engineer (Remote)"
+[2026-03-09T11:35:14.290Z] [INFO] Skipping irrelevant: "Associate Software Engineer
+Associate Software Engineer with verification"
+[2026-03-09T11:35:14.290Z] [INFO] Skipping irrelevant: "UI/UX Designer
+UI/UX Designer"
+[2026-03-09T11:35:14.290Z] [INFO] Skipping irrelevant: "Frontend Developer
+Frontend Developer"
+[2026-03-09T11:35:18.599Z] [INFO] Telegram notification sent
+[2026-03-09T11:35:18.703Z] [INFO] 
+=== Done. Applied to 0 jobs this session ===
+[2026-03-09T11:39:17.458Z] [INFO] === LinkedIn Bot Starting ===
+[2026-03-09T11:39:17.459Z] [INFO] Searches: 5 combinations (5 keywords × 1 cities)
+[2026-03-09T11:39:18.134Z] [INFO] Telegram notification sent
+[2026-03-09T11:39:19.464Z] [INFO] Navigating to LinkedIn login...
+[2026-03-09T11:39:32.961Z] [INFO] Logged in successfully
+[2026-03-09T11:39:32.961Z] [INFO] 
+=== Searching: "React Native Developer" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:39:41.213Z] [INFO] Found 7 job listings
+[2026-03-09T11:39:41.215Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T11:39:41.215Z] [INFO] Skipping irrelevant: "Software Engineer | $80/hr Remote
+Software Engineer | $80/hr Remote"
+[2026-03-09T11:39:41.215Z] [INFO] Skipping irrelevant: "Frontend Developer
+Frontend Developer"
+[2026-03-09T11:39:41.215Z] [INFO] Skipping irrelevant: "Information Technology Developer
+Information Technology Developer"
+[2026-03-09T11:39:41.215Z] [INFO] Skipping irrelevant: "Remote Software Engineer (JavaScript)
+Remote Software Engineer (JavaScript) with verification"
+[2026-03-09T11:39:41.215Z] [INFO] Skipping irrelevant: "Associate Software Engineer
+Associate Software Engineer with verification"
+[2026-03-09T11:39:42.010Z] [INFO] 
+--- Applying: Android Developer (SDE1)
+Android Developer (SDE1) with verification at Chalo (Navi Mumbai, Maharashtra, India (On-site)) ---
+[2026-03-09T11:39:58.710Z] [INFO] Clicked Easy Apply: Android Developer (SDE1)
+Android Developer (SDE1) with verification
+[2026-03-09T11:40:52.520Z] [INFO] 
+=== Searching: "React Native Engineer" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:40:59.900Z] [INFO] Found 7 job listings
+[2026-03-09T11:40:59.901Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T11:40:59.901Z] [INFO] Skipping irrelevant: "Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG
+Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG"
+[2026-03-09T11:40:59.901Z] [INFO] Skipping irrelevant: "Software Engineer | $80/hr Remote
+Software Engineer | $80/hr Remote"
+[2026-03-09T11:40:59.901Z] [INFO] Skipping irrelevant: "Frontend Developer
+Frontend Developer"
+[2026-03-09T11:40:59.901Z] [INFO] Skipping irrelevant: "UI/UX Designer
+UI/UX Designer"
+[2026-03-09T11:40:59.902Z] [INFO] Skipping irrelevant: "Associate Software Engineer
+Associate Software Engineer with verification"
+[2026-03-09T11:40:59.902Z] [INFO] Skipping irrelevant: "Software Engineer
+Software Engineer with verification"
+[2026-03-09T11:41:03.546Z] [INFO] 
+=== Searching: "Mobile Developer React Native" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:41:12.639Z] [INFO] Found 7 job listings
+[2026-03-09T11:41:12.639Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T11:41:12.639Z] [INFO] Skipping irrelevant: "Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG
+Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG"
+[2026-03-09T11:41:12.639Z] [INFO] Skipping irrelevant: "Software Engineer | $80/hr Remote
+Software Engineer | $80/hr Remote"
+[2026-03-09T11:41:12.639Z] [INFO] Skipping irrelevant: "Frontend Developer
+Frontend Developer"
+[2026-03-09T11:41:12.640Z] [INFO] Skipping irrelevant: "Associate Software Engineer
+Associate Software Engineer with verification"
+[2026-03-09T11:41:12.640Z] [INFO] Skipping irrelevant: "Software Engineer
+Software Engineer with verification"
+[2026-03-09T11:41:12.640Z] [INFO] Skipping irrelevant: "Information Technology Developer
+Information Technology Developer"
+[2026-03-09T11:41:18.241Z] [INFO] 
+=== Searching: " React Native" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:41:26.010Z] [INFO] Found 7 job listings
+[2026-03-09T11:41:26.011Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T11:41:26.011Z] [INFO] Skipping irrelevant: "Software Engineer | $80/hr Remote
+Software Engineer | $80/hr Remote"
+[2026-03-09T11:41:26.011Z] [INFO] Skipping irrelevant: "Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG
+Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG"
+[2026-03-09T11:41:26.012Z] [INFO] Skipping irrelevant: "Frontend Developer
+Frontend Developer"
+[2026-03-09T11:41:26.012Z] [INFO] Skipping irrelevant: "UI/UX Designer
+UI/UX Designer"
+[2026-03-09T11:41:26.012Z] [INFO] Skipping irrelevant: "Associate Software Engineer
+Associate Software Engineer with verification"
+[2026-03-09T11:41:26.012Z] [INFO] Skipping irrelevant: "Software Engineer
+Software Engineer with verification"
+[2026-03-09T11:41:29.430Z] [INFO] 
+=== Searching: " Reactjs developer" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:41:36.754Z] [INFO] Found 7 job listings
+[2026-03-09T11:41:36.755Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T11:41:36.755Z] [INFO] Skipping irrelevant: "Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG
+Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG"
+[2026-03-09T11:41:36.755Z] [INFO] Skipping irrelevant: "Software Engineer | $80/hr Remote
+Software Engineer | $80/hr Remote"
+[2026-03-09T11:41:36.755Z] [INFO] Skipping irrelevant: "Frontend Developer
+Frontend Developer"
+[2026-03-09T11:41:36.756Z] [INFO] Skipping irrelevant: "Software Engineer
+Software Engineer with verification"
+[2026-03-09T11:41:36.756Z] [INFO] Skipping irrelevant: "Associate Software Engineer
+Associate Software Engineer with verification"
+[2026-03-09T11:41:36.756Z] [INFO] Skipping irrelevant: "MEARN Full Stack Engineer
+MEARN Full Stack Engineer"
+[2026-03-09T11:41:40.516Z] [INFO] Telegram notification sent
+[2026-03-09T11:41:40.625Z] [INFO] 
+=== Done. Applied to 0 jobs this session ===
+[2026-03-09T11:47:24.464Z] [INFO] === LinkedIn Bot Starting ===
+[2026-03-09T11:47:24.465Z] [INFO] Searches: 5 combinations (5 keywords × 1 cities)
+[2026-03-09T11:47:25.291Z] [INFO] Telegram notification sent
+[2026-03-09T11:47:26.626Z] [INFO] Navigating to LinkedIn login...
+[2026-03-09T11:47:39.135Z] [INFO] Logged in successfully
+[2026-03-09T11:47:39.137Z] [INFO] 
+=== Searching: "React Native Developer" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:47:47.746Z] [INFO] Found 7 job listings
+[2026-03-09T11:47:48.600Z] [INFO] 
+--- Applying: React Developer | Remote
+React Developer | Remote at Crossing Hurdles (India (Remote)) ---
+[2026-03-09T11:48:05.957Z] [INFO] Clicked Easy Apply: React Developer | Remote
+React Developer | Remote
+[2026-03-09T11:48:29.675Z] [INFO] Screenshot saved: /Users/nelsonpinto/Desktop/Linkdinauto/linkedin-bot/screenshots/applied_Crossing Hurdles_1773056909616.png
+[2026-03-09T11:48:29.675Z] [INFO] Session total: 1/10
+[2026-03-09T11:48:30.333Z] [INFO] Logged to Sheets: Crossing Hurdles — React Developer | Remote
+React Developer | Remote
+[2026-03-09T11:48:30.944Z] [INFO] Telegram notification sent
+[2026-03-09T11:48:42.187Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T11:48:42.755Z] [INFO] 
+--- Applying: Front-End Developer – SCG India
+Front-End Developer – SCG India with verification at SCG (Mumbai Metropolitan Region (On-site)) ---
+[2026-03-09T11:48:59.648Z] [INFO] Clicked Easy Apply: Front-End Developer – SCG India
+Front-End Developer – SCG India with verification
+[2026-03-09T11:49:07.657Z] [INFO] Screenshot saved: /Users/nelsonpinto/Desktop/Linkdinauto/linkedin-bot/screenshots/applied_SCG_1773056947588.png
+[2026-03-09T11:49:07.657Z] [INFO] Session total: 2/10
+[2026-03-09T11:49:08.599Z] [INFO] Logged to Sheets: SCG — Front-End Developer – SCG India
+Front-End Developer – SCG India with verification
+[2026-03-09T11:49:09.223Z] [INFO] Telegram notification sent
+[2026-03-09T11:49:17.586Z] [INFO] Skipping irrelevant: "Blockchain Engineer
+Blockchain Engineer"
+[2026-03-09T11:49:17.587Z] [INFO] Skipping irrelevant: "Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG
+Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG"
+[2026-03-09T11:49:17.587Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack)"
+[2026-03-09T11:49:18.314Z] [INFO] 
+--- Applying: Frontend Developer
+Frontend Developer at GoML (India (Remote)) ---
+[2026-03-09T11:49:36.779Z] [INFO] Clicked Easy Apply: Frontend Developer
+Frontend Developer
+[2026-03-09T11:50:16.705Z] [INFO] 
+=== Searching: "React Native Engineer" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:50:24.536Z] [INFO] Found 7 job listings
+[2026-03-09T11:50:25.073Z] [INFO] 
+--- Applying: Frontend Developer (React) | Remote
+Frontend Developer (React) | Remote at Crossing Hurdles (India (Remote)) ---
+[2026-03-09T11:50:43.364Z] [INFO] Clicked Easy Apply: Frontend Developer (React) | Remote
+Frontend Developer (React) | Remote
+[2026-03-09T11:51:07.944Z] [INFO] Screenshot saved: /Users/nelsonpinto/Desktop/Linkdinauto/linkedin-bot/screenshots/applied_Crossing Hurdles_1773057067895.png
+[2026-03-09T11:51:07.946Z] [INFO] Session total: 3/10
+[2026-03-09T11:51:08.508Z] [INFO] Logged to Sheets: Crossing Hurdles — Frontend Developer (React) | Remote
+Frontend Developer (React) | Remote
+[2026-03-09T11:51:09.146Z] [INFO] Telegram notification sent
+[2026-03-09T11:51:18.320Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T11:51:18.321Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack)"
+[2026-03-09T11:51:18.322Z] [INFO] Skipping irrelevant: "Software Engineer 2 (Frontend)
+Software Engineer 2 (Frontend)"
+[2026-03-09T11:51:18.322Z] [INFO] Skipping irrelevant: "Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG
+Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG"
+[2026-03-09T11:51:18.322Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack) with verification"
+[2026-03-09T11:51:18.322Z] [INFO] Skipping irrelevant: "Software Engineer (Remote)
+Software Engineer (Remote)"
+[2026-03-09T11:51:24.192Z] [INFO] 
+=== Searching: "Mobile Developer React Native" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:51:32.862Z] [INFO] Found 7 job listings
+[2026-03-09T11:51:32.862Z] [INFO] Skipping irrelevant: "Full Stack AI Developer
+Full Stack AI Developer"
+[2026-03-09T11:51:32.863Z] [INFO] Skipping irrelevant: "Frontend Engineer | Remote
+Frontend Engineer | Remote"
+[2026-03-09T11:51:32.863Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T11:51:32.863Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack)"
+[2026-03-09T11:51:32.863Z] [INFO] Skipping irrelevant: "Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG
+Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG"
+[2026-03-09T11:51:32.863Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack) with verification"
+[2026-03-09T11:51:32.863Z] [INFO] Skipping irrelevant: "Software Engineer 2 (Frontend)
+Software Engineer 2 (Frontend)"
+[2026-03-09T11:51:36.524Z] [INFO] 
+=== Searching: " React Native" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:51:43.694Z] [INFO] Found 7 job listings
+[2026-03-09T11:51:43.695Z] [INFO] Skipping irrelevant: "Full Stack AI Developer
+Full Stack AI Developer"
+[2026-03-09T11:51:43.695Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T11:51:43.695Z] [INFO] Skipping irrelevant: "Software Engineer | $80/hr Remote
+Software Engineer | $80/hr Remote"
+[2026-03-09T11:51:43.695Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack)"
+[2026-03-09T11:51:43.695Z] [INFO] Skipping irrelevant: "Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG
+Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG"
+[2026-03-09T11:51:43.695Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack) with verification"
+[2026-03-09T11:51:43.695Z] [INFO] Skipping irrelevant: "Software Engineer 2 (Frontend)
+Software Engineer 2 (Frontend)"
+[2026-03-09T11:51:47.485Z] [INFO] 
+=== Searching: " Reactjs developer" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:51:55.532Z] [INFO] Found 7 job listings
+[2026-03-09T11:51:55.532Z] [INFO] Skipping irrelevant: "Full Stack AI Developer
+Full Stack AI Developer"
+[2026-03-09T11:51:55.532Z] [INFO] Skipping irrelevant: "Software Engineer (Frontend) | Remote
+Software Engineer (Frontend) | Remote"
+[2026-03-09T11:51:55.532Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T11:51:55.532Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack)"
+[2026-03-09T11:51:55.532Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack) with verification"
+[2026-03-09T11:51:55.532Z] [INFO] Skipping irrelevant: "Software Engineer 2 (Frontend)
+Software Engineer 2 (Frontend)"
+[2026-03-09T11:51:55.532Z] [INFO] Skipping irrelevant: "Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG
+Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG"
+[2026-03-09T11:52:01.654Z] [INFO] Telegram notification sent
+[2026-03-09T11:52:01.877Z] [INFO] 
+=== Done. Applied to 3 jobs this session ===
+[2026-03-09T11:52:38.853Z] [INFO] === LinkedIn Bot Starting ===
+[2026-03-09T11:52:38.854Z] [INFO] Searches: 5 combinations (5 keywords × 1 cities)
+[2026-03-09T11:52:39.482Z] [INFO] Telegram notification sent
+[2026-03-09T11:52:41.396Z] [INFO] Navigating to LinkedIn login...
+[2026-03-09T11:52:54.635Z] [INFO] Logged in successfully
+[2026-03-09T11:52:54.636Z] [INFO] 
+=== Searching: "React Native Developer" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:53:03.675Z] [INFO] Found 7 job listings
+[2026-03-09T11:53:03.676Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T11:53:03.677Z] [INFO] Skipping irrelevant: "Software Engineer | $80/hr Remote
+Software Engineer | $80/hr Remote"
+[2026-03-09T11:53:03.677Z] [INFO] Skipping irrelevant: "Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG
+Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG"
+[2026-03-09T11:53:03.677Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack)"
+[2026-03-09T11:53:03.677Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack) with verification"
+[2026-03-09T11:53:03.677Z] [INFO] Skipping irrelevant: "Software Engineer 2 (Frontend)
+Software Engineer 2 (Frontend)"
+[2026-03-09T11:53:03.677Z] [INFO] Skipping irrelevant: "Software Engineer
+Software Engineer with verification"
+[2026-03-09T11:53:07.512Z] [INFO] 
+=== Searching: "React Native Engineer" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:53:15.460Z] [INFO] Found 7 job listings
+[2026-03-09T11:53:15.461Z] [INFO] Skipping irrelevant: "Frontend Engineer | Remote
+Frontend Engineer | Remote"
+[2026-03-09T11:53:15.461Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T11:53:15.461Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack)"
+[2026-03-09T11:53:15.461Z] [INFO] Skipping irrelevant: "Software Engineer 2 (Frontend)
+Software Engineer 2 (Frontend)"
+[2026-03-09T11:53:15.462Z] [INFO] Skipping irrelevant: "Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG
+Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG"
+[2026-03-09T11:53:15.462Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack) with verification"
+[2026-03-09T11:53:15.462Z] [INFO] Skipping irrelevant: "IT Officer – SCG India
+IT Officer – SCG India with verification"
+[2026-03-09T11:53:19.515Z] [INFO] 
+=== Searching: "Mobile Developer React Native" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:53:27.793Z] [INFO] Found 7 job listings
+[2026-03-09T11:53:27.793Z] [INFO] Skipping irrelevant: "Software Engineer (Frontend) | Remote
+Software Engineer (Frontend) | Remote"
+[2026-03-09T11:53:27.793Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T11:53:27.793Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack)"
+[2026-03-09T11:53:27.794Z] [INFO] Skipping irrelevant: "Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG
+Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG"
+[2026-03-09T11:53:27.794Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack) with verification"
+[2026-03-09T11:53:27.794Z] [INFO] Skipping irrelevant: "Software Engineer 2 (Frontend)
+Software Engineer 2 (Frontend)"
+[2026-03-09T11:53:28.554Z] [INFO] 
+--- Applying: Senior React Native Mobile Developer-Native iOS & Android Integration
+Senior React Native Mobile Developer-Native iOS & Android Integration at TAT IT Technolgies (India (Remote)) ---
+[2026-03-09T11:53:47.212Z] [INFO] Clicked Easy Apply: Senior React Native Mobile Developer-Native iOS & Android Integration
+Senior React Native Mobile Developer-Native iOS & Android Integration
+[2026-03-09T11:54:28.236Z] [INFO] 
+=== Searching: " React Native" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:54:43.514Z] [INFO] Found 7 job listings
+[2026-03-09T11:54:43.516Z] [INFO] Skipping irrelevant: "Event Operations & Production
+Event Operations & Production"
+[2026-03-09T11:54:43.516Z] [INFO] Skipping irrelevant: "Software Engineer (Frontend) | Remote
+Software Engineer (Frontend) | Remote"
+[2026-03-09T11:54:43.516Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T11:54:43.516Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack)"
+[2026-03-09T11:54:43.516Z] [INFO] Skipping irrelevant: "Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG
+Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG"
+[2026-03-09T11:54:43.516Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack) with verification"
+[2026-03-09T11:54:43.516Z] [INFO] Skipping irrelevant: "Voice & SFX Creator
+Voice & SFX Creator"
+[2026-03-09T11:54:49.001Z] [INFO] 
+=== Searching: " Reactjs developer" in Mumbai, Maharashtra, India ===
+[2026-03-09T11:54:56.088Z] [INFO] Found 7 job listings
+[2026-03-09T11:54:56.089Z] [INFO] Skipping irrelevant: "Software Engineer (Frontend) | Remote
+Software Engineer (Frontend) | Remote"
+[2026-03-09T11:54:56.089Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T11:54:56.089Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack)"
+[2026-03-09T11:54:56.089Z] [INFO] Skipping irrelevant: "Software Development Engineer I, Front End
+Software Development Engineer I, Front End"
+[2026-03-09T11:54:56.089Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack) with verification"
+[2026-03-09T11:54:56.089Z] [INFO] Skipping irrelevant: "Software Engineer 2 (Frontend)
+Software Engineer 2 (Frontend)"
+[2026-03-09T11:54:56.089Z] [INFO] Skipping irrelevant: "Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG
+Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG"
+[2026-03-09T11:55:01.017Z] [INFO] Telegram notification sent
+[2026-03-09T11:55:01.141Z] [INFO] 
+=== Done. Applied to 0 jobs this session ===
+[2026-03-09T12:07:33.595Z] [INFO] === LinkedIn Bot Starting ===
+[2026-03-09T12:07:33.596Z] [INFO] Searches: 5 combinations (5 keywords × 1 cities)
+[2026-03-09T12:07:34.341Z] [INFO] Telegram notification sent
+[2026-03-09T12:07:35.614Z] [INFO] Navigating to LinkedIn login...
+[2026-03-09T12:08:10.167Z] [ERROR] Fatal error: page.fill: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#username')[22m
+
+[2026-03-09T12:08:10.815Z] [INFO] Telegram notification sent
+[2026-03-09T12:08:10.871Z] [INFO] Screenshot saved: /Users/nelsonpinto/Desktop/Linkdinauto/linkedin-bot/screenshots/error_1773058090816.png
+[2026-03-09T12:08:11.238Z] [INFO] Telegram notification sent
+[2026-03-09T12:08:11.338Z] [INFO] 
+=== Done. Applied to 0 jobs this session ===
+[2026-03-09T12:09:01.436Z] [INFO] === LinkedIn Bot Starting ===
+[2026-03-09T12:09:01.437Z] [INFO] Searches: 5 combinations (5 keywords × 1 cities)
+[2026-03-09T12:09:02.065Z] [INFO] Telegram notification sent
+[2026-03-09T12:09:02.828Z] [INFO] Navigating to LinkedIn login...
+[2026-03-09T12:09:07.705Z] [INFO] Login form loaded
+[2026-03-09T12:09:15.411Z] [INFO] Logged in successfully
+[2026-03-09T12:09:15.411Z] [INFO] 
+=== Searching: "React Native Developer" in Mumbai, Maharashtra, India ===
+[2026-03-09T12:09:22.070Z] [INFO] 
+--- Page 1 ---
+[2026-03-09T12:09:26.532Z] [INFO] All jobs loaded on page (height: 0px)
+[2026-03-09T12:09:26.534Z] [INFO] Found 15 job listings
+[2026-03-09T12:09:26.534Z] [INFO] Skipping irrelevant: "Quants Developer
+Quants Developer"
+[2026-03-09T12:09:26.534Z] [INFO] Skipping irrelevant: "Application Developer | $65/hr Remote
+Application Developer | $65/hr Remote"
+[2026-03-09T12:09:26.534Z] [INFO] Skipping irrelevant: "Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG
+Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG"
+[2026-03-09T12:09:26.534Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack)"
+[2026-03-09T12:09:26.535Z] [INFO] Skipping irrelevant: "Software Engineer 2 (Frontend)
+Software Engineer 2 (Frontend)"
+[2026-03-09T12:09:26.535Z] [INFO] Skipping irrelevant: "Software Engineer (Remote)
+Software Engineer (Remote)"
+[2026-03-09T12:09:26.535Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack) with verification"
+[2026-03-09T12:09:26.535Z] [INFO] Skipping irrelevant: "Associate Software Engineer
+Associate Software Engineer with verification"
+[2026-03-09T12:09:26.535Z] [INFO] Skipping irrelevant: "Software Engineer
+Software Engineer with verification"
+[2026-03-09T12:09:26.535Z] [INFO] Skipping irrelevant: "Full Stack Engineer
+Full Stack Engineer"
+[2026-03-09T12:09:26.535Z] [INFO] Skipping irrelevant: "Remote JavaScript Engineer
+Remote JavaScript Engineer with verification"
+[2026-03-09T12:09:26.535Z] [INFO] Skipping irrelevant: "Full stack Developer
+Full stack Developer"
+[2026-03-09T12:09:26.535Z] [INFO] Skipping irrelevant: "Full Stack Engineer
+Full Stack Engineer"
+[2026-03-09T12:09:26.535Z] [INFO] Skipping irrelevant: "Full Stack Engineer
+Full Stack Engineer"
+[2026-03-09T12:09:27.635Z] [INFO] 
+--- Applying: Sr Frontend Developer
+Sr Frontend Developer at Empathy Engines LLC (India (Remote)) ---
+[2026-03-09T12:09:33.688Z] [INFO] Clicked Easy Apply: Sr Frontend Developer
+Sr Frontend Developer
+[2026-03-09T12:10:10.506Z] [INFO] No more pages available
+[2026-03-09T12:10:16.124Z] [INFO] 
+=== Searching: "React Native Engineer" in Mumbai, Maharashtra, India ===
+[2026-03-09T12:10:22.567Z] [INFO] 
+--- Page 1 ---
+[2026-03-09T12:10:26.623Z] [INFO] All jobs loaded on page (height: 0px)
+[2026-03-09T12:10:26.629Z] [INFO] Found 7 job listings
+[2026-03-09T12:10:26.629Z] [INFO] Skipping irrelevant: "Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG
+Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG"
+[2026-03-09T12:10:26.630Z] [INFO] Skipping irrelevant: "Software Engineer | $80/hr Remote
+Software Engineer | $80/hr Remote"
+[2026-03-09T12:10:26.630Z] [INFO] Skipping irrelevant: "Software Engineer 2 (Frontend)
+Software Engineer 2 (Frontend)"
+[2026-03-09T12:10:26.630Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack)"
+[2026-03-09T12:10:26.631Z] [INFO] Skipping irrelevant: "UI/UX Designer
+UI/UX Designer"
+[2026-03-09T12:10:26.631Z] [INFO] Skipping irrelevant: "Software Engineer (Remote)
+Software Engineer (Remote)"
+[2026-03-09T12:10:26.631Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack) with verification"
+[2026-03-09T12:10:26.642Z] [INFO] Moving to next page...
+[2026-03-09T12:10:31.878Z] [INFO] 
+--- Page 2 ---
+[2026-03-09T12:10:36.137Z] [INFO] All jobs loaded on page (height: 0px)
+[2026-03-09T12:10:36.142Z] [INFO] Found 7 job listings
+[2026-03-09T12:10:36.143Z] [INFO] Skipping irrelevant: "Software Engineer (Frontend) | Remote
+Software Engineer (Frontend) | Remote"
+[2026-03-09T12:10:36.143Z] [INFO] Skipping irrelevant: "Remote JavaScript Engineer
+Remote JavaScript Engineer with verification"
+[2026-03-09T12:10:36.144Z] [INFO] Skipping irrelevant: "Software Engineer
+Software Engineer with verification"
+[2026-03-09T12:10:36.144Z] [INFO] Skipping irrelevant: "Full Stack Engineer
+Full Stack Engineer"
+[2026-03-09T12:10:36.144Z] [INFO] Skipping irrelevant: "Full Stack Engineer
+Full Stack Engineer"
+[2026-03-09T12:10:36.144Z] [INFO] Skipping irrelevant: "MEARN Full Stack Engineer
+MEARN Full Stack Engineer"
+[2026-03-09T12:10:36.144Z] [INFO] Skipping irrelevant: "Software Developer Engineer 2
+Software Developer Engineer 2"
+[2026-03-09T12:10:36.152Z] [INFO] Moving to next page...
+[2026-03-09T12:10:40.354Z] [INFO] 
+--- Page 3 ---
+[2026-03-09T12:10:44.727Z] [INFO] All jobs loaded on page (height: 0px)
+[2026-03-09T12:10:44.731Z] [INFO] Found 7 job listings
+[2026-03-09T12:10:44.732Z] [INFO] Skipping irrelevant: "Quants Developer
+Quants Developer"
+[2026-03-09T12:10:44.732Z] [INFO] Skipping irrelevant: "Software Engineer (Frontend) | Remote
+Software Engineer (Frontend) | Remote"
+[2026-03-09T12:10:44.732Z] [INFO] Skipping irrelevant: "Flutter Interaction & UX Engineer
+Flutter Interaction & UX Engineer"
+[2026-03-09T12:10:44.733Z] [INFO] Skipping irrelevant: "Software Development Engineer I, Front End
+Software Development Engineer I, Front End"
+[2026-03-09T12:10:45.287Z] [INFO] 
+--- Applying: Frontend Developer
+Frontend Developer at VectorShift (India (Remote)) ---
+[2026-03-09T12:11:02.205Z] [INFO] Clicked Easy Apply: Frontend Developer
+Frontend Developer
+[2026-03-09T12:11:19.023Z] [INFO] Screenshot saved: /Users/nelsonpinto/Desktop/Linkdinauto/linkedin-bot/screenshots/applied_VectorShift_1773058278978.png
+[2026-03-09T12:11:19.023Z] [INFO] Session total: 1/10
+[2026-03-09T12:11:19.627Z] [INFO] Logged to Sheets: VectorShift — Frontend Developer
+Frontend Developer
+[2026-03-09T12:11:20.261Z] [INFO] Telegram notification sent
+[2026-03-09T12:11:30.271Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T12:11:30.271Z] [INFO] Skipping irrelevant: "Software Engineer
+Software Engineer with verification"
+[2026-03-09T12:11:30.273Z] [INFO] No more pages available
+[2026-03-09T12:11:35.408Z] [INFO] 
+=== Searching: "Mobile Developer React Native" in Mumbai, Maharashtra, India ===
+[2026-03-09T12:11:41.385Z] [INFO] 
+--- Page 1 ---
+[2026-03-09T12:11:45.576Z] [INFO] All jobs loaded on page (height: 0px)
+[2026-03-09T12:11:45.579Z] [INFO] Found 7 job listings
+[2026-03-09T12:11:45.580Z] [INFO] Skipping irrelevant: "Quants Developer
+Quants Developer"
+[2026-03-09T12:11:45.580Z] [INFO] Skipping irrelevant: "Frontend Engineer | Remote
+Frontend Engineer | Remote"
+[2026-03-09T12:11:45.580Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T12:11:45.580Z] [INFO] Skipping irrelevant: "Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG
+Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG"
+[2026-03-09T12:11:45.580Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack)"
+[2026-03-09T12:11:45.580Z] [INFO] Skipping irrelevant: "Software Engineer 2 (Frontend)
+Software Engineer 2 (Frontend)"
+[2026-03-09T12:11:45.580Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack) with verification"
+[2026-03-09T12:11:45.584Z] [INFO] Moving to next page...
+[2026-03-09T12:11:50.598Z] [INFO] 
+--- Page 2 ---
+[2026-03-09T12:11:54.483Z] [INFO] All jobs loaded on page (height: 0px)
+[2026-03-09T12:11:54.486Z] [INFO] Found 7 job listings
+[2026-03-09T12:11:54.487Z] [INFO] Skipping irrelevant: "Software Engineer (Frontend) | Remote
+Software Engineer (Frontend) | Remote"
+[2026-03-09T12:11:54.487Z] [INFO] Skipping irrelevant: "Software Development Engineer I, Front End
+Software Development Engineer I, Front End"
+[2026-03-09T12:11:54.487Z] [INFO] Skipping irrelevant: "Software Engineer
+Software Engineer with verification"
+[2026-03-09T12:11:54.487Z] [INFO] Skipping irrelevant: "Senior Software Engineer
+Senior Software Engineer with verification"
+[2026-03-09T12:11:55.002Z] [INFO] Already applied: "Frontend Developer
+Frontend Developer" — skipping
+[2026-03-09T12:11:55.003Z] [INFO] Skipping irrelevant: "Java Developer
+Java Developer with verification"
+[2026-03-09T12:11:55.003Z] [INFO] Skipping irrelevant: "API Developer - Vuram India
+API Developer - Vuram India with verification"
+[2026-03-09T12:11:55.006Z] [INFO] Moving to next page...
+[2026-03-09T12:12:00.680Z] [INFO] 
+--- Page 3 ---
+[2026-03-09T12:12:04.848Z] [INFO] All jobs loaded on page (height: 0px)
+[2026-03-09T12:12:04.851Z] [INFO] Found 7 job listings
+[2026-03-09T12:12:05.362Z] [INFO] 
+--- Applying: React Developer | Remote
+React Developer | Remote at Crossing Hurdles (APJ (Remote)) ---
+[2026-03-09T12:12:23.472Z] [INFO] Clicked Easy Apply: React Developer | Remote
+React Developer | Remote
+[2026-03-09T12:12:31.043Z] [INFO] === LinkedIn Bot Starting ===
+[2026-03-09T12:12:31.044Z] [INFO] Searches: 5 combinations (5 keywords × 1 cities)
+[2026-03-09T12:12:31.704Z] [INFO] Telegram notification sent
+[2026-03-09T12:12:32.494Z] [INFO] Navigating to LinkedIn login...
+[2026-03-09T12:12:37.345Z] [INFO] Login form loaded
+[2026-03-09T12:12:47.247Z] [INFO] Logged in successfully
+[2026-03-09T12:12:47.248Z] [INFO] 
+=== Searching: "React Native Developer" in Mumbai, Maharashtra, India ===
+[2026-03-09T12:12:53.672Z] [INFO] 
+--- Page 1 ---
+[2026-03-09T12:12:57.751Z] [INFO] All jobs loaded on page (height: 0px)
+[2026-03-09T12:12:57.755Z] [INFO] Found 7 job listings
+[2026-03-09T12:12:57.755Z] [INFO] Skipping irrelevant: "Application Developer | $65/hr Remote
+Application Developer | $65/hr Remote"
+[2026-03-09T12:12:57.755Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T12:12:57.755Z] [INFO] Skipping irrelevant: "Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG
+Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG"
+[2026-03-09T12:12:57.755Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack)"
+[2026-03-09T12:12:57.755Z] [INFO] Skipping irrelevant: "Software Engineer 2 (Frontend)
+Software Engineer 2 (Frontend)"
+[2026-03-09T12:12:57.755Z] [INFO] Skipping irrelevant: "Software Engineer (Remote)
+Software Engineer (Remote)"
+[2026-03-09T12:12:57.755Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack) with verification"
+[2026-03-09T12:12:57.760Z] [INFO] Moving to next page...
+[2026-03-09T12:13:02.639Z] [INFO] 
+--- Page 2 ---
+[2026-03-09T12:13:06.595Z] [INFO] All jobs loaded on page (height: 0px)
+[2026-03-09T12:13:06.599Z] [INFO] Found 7 job listings
+[2026-03-09T12:13:06.599Z] [INFO] Skipping irrelevant: "Quants Developer
+Quants Developer"
+[2026-03-09T12:13:06.600Z] [INFO] Skipping irrelevant: "Software Engineer | $80/hr Remote
+Software Engineer | $80/hr Remote"
+[2026-03-09T12:13:06.600Z] [INFO] Skipping irrelevant: "Software Engineer
+Software Engineer with verification"
+[2026-03-09T12:13:06.600Z] [INFO] Skipping irrelevant: "Remote JavaScript Developer
+Remote JavaScript Developer with verification"
+[2026-03-09T12:13:06.600Z] [INFO] Skipping irrelevant: "Senior Software Engineer
+Senior Software Engineer"
+[2026-03-09T12:13:06.600Z] [INFO] Skipping irrelevant: "Java Developer
+Java Developer with verification"
+[2026-03-09T12:13:06.600Z] [INFO] Skipping irrelevant: "Unity Developer
+Unity Developer"
+[2026-03-09T12:13:06.605Z] [INFO] Moving to next page...
+[2026-03-09T12:13:12.159Z] [INFO] 
+--- Page 3 ---
+[2026-03-09T12:13:16.494Z] [INFO] All jobs loaded on page (height: 0px)
+[2026-03-09T12:13:16.496Z] [INFO] Found 7 job listings
+[2026-03-09T12:13:16.496Z] [INFO] Skipping irrelevant: "Software Engineer (Frontend) | Remote
+Software Engineer (Frontend) | Remote"
+[2026-03-09T12:13:16.496Z] [INFO] Skipping irrelevant: "Software Development Engineer I, Front End
+Software Development Engineer I, Front End"
+[2026-03-09T12:13:16.496Z] [INFO] Skipping irrelevant: "Remote JavaScript Developer
+Remote JavaScript Developer with verification"
+[2026-03-09T12:13:16.496Z] [INFO] Skipping irrelevant: "Software Engineer
+Software Engineer with verification"
+[2026-03-09T12:13:17.139Z] [INFO] 
+--- Applying: Senior React Native Mobile Developer-Native iOS & Android Integration
+Senior React Native Mobile Developer-Native iOS & Android Integration at TAT IT Technolgies (India (Remote)) ---
+[2026-03-09T12:13:34.473Z] [INFO] Clicked Easy Apply: Senior React Native Mobile Developer-Native iOS & Android Integration
+Senior React Native Mobile Developer-Native iOS & Android Integration
+[2026-03-09T12:14:09.376Z] [INFO] Skipping irrelevant: "Grafana Developer
+Grafana Developer with verification"
+[2026-03-09T12:14:09.377Z] [INFO] Skipping irrelevant: "GAIN Central IT - Full Stack Developer
+GAIN Central IT - Full Stack Developer"
+[2026-03-09T12:14:09.380Z] [INFO] No more pages available
+[2026-03-09T12:14:12.748Z] [INFO] 
+=== Searching: "React Native Engineer" in Mumbai, Maharashtra, India ===
+[2026-03-09T12:14:18.218Z] [INFO] 
+--- Page 1 ---
+[2026-03-09T12:14:22.227Z] [INFO] All jobs loaded on page (height: 0px)
+[2026-03-09T12:14:22.230Z] [INFO] Found 7 job listings
+[2026-03-09T12:14:22.231Z] [INFO] Skipping irrelevant: "Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG
+Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG"
+[2026-03-09T12:14:22.231Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T12:14:22.231Z] [INFO] Skipping irrelevant: "Software Engineer | $80/hr Remote
+Software Engineer | $80/hr Remote"
+[2026-03-09T12:14:22.231Z] [INFO] Skipping irrelevant: "Software Engineer 2 (Frontend)
+Software Engineer 2 (Frontend)"
+[2026-03-09T12:14:22.231Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack)"
+[2026-03-09T12:14:22.231Z] [INFO] Skipping irrelevant: "UI/UX Designer
+UI/UX Designer"
+[2026-03-09T12:14:22.231Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack) with verification"
+[2026-03-09T12:14:22.236Z] [INFO] Moving to next page...
+[2026-03-09T12:14:28.075Z] [INFO] 
+--- Page 2 ---
+[2026-03-09T12:14:32.349Z] [INFO] All jobs loaded on page (height: 0px)
+[2026-03-09T12:14:32.354Z] [INFO] Found 7 job listings
+[2026-03-09T12:14:32.354Z] [INFO] Skipping irrelevant: "Fullstack Developer | Remote
+Fullstack Developer | Remote"
+[2026-03-09T12:14:32.355Z] [INFO] Skipping irrelevant: "Software Engineer
+Software Engineer with verification"
+[2026-03-09T12:14:32.355Z] [INFO] Skipping irrelevant: "Full Stack Engineer
+Full Stack Engineer"
+[2026-03-09T12:14:32.355Z] [INFO] Skipping irrelevant: "Full Stack Engineer
+Full Stack Engineer"
+[2026-03-09T12:14:32.356Z] [INFO] Skipping irrelevant: "Remote JavaScript Engineer
+Remote JavaScript Engineer with verification"
+[2026-03-09T12:14:32.356Z] [INFO] Skipping irrelevant: "Senior Software Engineer
+Senior Software Engineer with verification"
+[2026-03-09T12:14:32.356Z] [INFO] Skipping irrelevant: "Software Engineer
+Software Engineer with verification"
+[2026-03-09T12:14:32.367Z] [INFO] Moving to next page...
+[2026-03-09T12:14:36.535Z] [INFO] 
+--- Page 3 ---
+[2026-03-09T12:14:40.604Z] [INFO] All jobs loaded on page (height: 0px)
+[2026-03-09T12:14:40.606Z] [INFO] Found 7 job listings
+[2026-03-09T12:14:40.606Z] [INFO] Skipping irrelevant: "Software Engineer (Frontend) | Remote
+Software Engineer (Frontend) | Remote"
+[2026-03-09T12:14:40.606Z] [INFO] Skipping irrelevant: "Software Development Engineer I, Front End
+Software Development Engineer I, Front End"
+[2026-03-09T12:14:40.606Z] [INFO] Skipping irrelevant: "Remote JavaScript Developer
+Remote JavaScript Developer with verification"
+[2026-03-09T12:14:40.606Z] [INFO] Skipping irrelevant: "Software Engineer
+Software Engineer with verification"
+[2026-03-09T12:14:40.606Z] [INFO] Skipping irrelevant: "Full Stack Engineer
+Full Stack Engineer"
+[2026-03-09T12:14:41.627Z] [INFO] 
+--- Applying: Senior React Native Mobile Developer-Native iOS & Android Integration
+Senior React Native Mobile Developer-Native iOS & Android Integration at TAT IT Technolgies (India (Remote)) ---
+[2026-03-09T12:15:00.706Z] [INFO] Clicked Easy Apply: Senior React Native Mobile Developer-Native iOS & Android Integration
+Senior React Native Mobile Developer-Native iOS & Android Integration
+[2026-03-09T12:15:37.175Z] [INFO] Skipping irrelevant: "Software Engineer (Fresh Graduate)
+Software Engineer (Fresh Graduate)"
+[2026-03-09T12:15:37.178Z] [INFO] No more pages available
+[2026-03-09T12:15:41.137Z] [INFO] 
+=== Searching: "Mobile Developer React Native" in Mumbai, Maharashtra, India ===
+[2026-03-09T12:15:45.669Z] [INFO] 
+--- Page 1 ---
+[2026-03-09T12:15:49.615Z] [INFO] All jobs loaded on page (height: 0px)
+[2026-03-09T12:15:49.619Z] [INFO] Found 7 job listings
+[2026-03-09T12:15:49.620Z] [INFO] Skipping irrelevant: "Software Engineer (Frontend) | Remote
+Software Engineer (Frontend) | Remote"
+[2026-03-09T12:15:49.620Z] [INFO] Skipping irrelevant: "Software Development Engineer I, Front End
+Software Development Engineer I, Front End"
+[2026-03-09T12:15:49.620Z] [INFO] Skipping irrelevant: "Jr. Fullstack Developer
+Jr. Fullstack Developer"
+[2026-03-09T12:15:49.620Z] [INFO] Skipping irrelevant: "Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG
+Entry-Level Frontend Engineer (9-Month Contract) - Octopus by RTG"
+[2026-03-09T12:15:49.620Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack)"
+[2026-03-09T12:15:49.620Z] [INFO] Skipping irrelevant: "Software Development Engineer I (Full Stack)
+Software Development Engineer I (Full Stack) with verification"
+[2026-03-09T12:15:49.620Z] [INFO] Skipping irrelevant: "Software Engineer (Remote)
+Software Engineer (Remote)"
+[2026-03-09T12:15:49.627Z] [INFO] Moving to next page...
+[2026-03-09T12:15:54.841Z] [INFO] 
+--- Page 2 ---
+[2026-03-09T12:15:59.124Z] [INFO] All jobs loaded on page (height: 0px)
+[2026-03-09T12:15:59.125Z] [INFO] Found 7 job listings
+[2026-03-09T12:15:59.125Z] [INFO] Skipping irrelevant: "Software Engineer (Frontend) | Remote
+Software Engineer (Frontend) | Remote"
+[2026-03-09T12:15:59.125Z] [INFO] Skipping irrelevant: "Software Engineer
+Software Engineer with verification"
+[2026-03-09T12:15:59.125Z] [INFO] Skipping irrelevant: "MEARN Full Stack Engineer
+MEARN Full Stack Engineer"
+[2026-03-09T12:15:59.125Z] [INFO] Skipping irrelevant: "Senior Software Engineer
+Senior Software Engineer with verification"
+[2026-03-09T12:15:59.125Z] [INFO] Skipping irrelevant: "Software Engineer
+Software Engineer with verification"
+[2026-03-09T12:15:59.125Z] [INFO] Skipping irrelevant: "ServiceNow Developer-SPM
+ServiceNow Developer-SPM"
+[2026-03-09T12:15:59.125Z] [INFO] Skipping irrelevant: "Remote Software Developer (Go)
+Remote Software Developer (Go) with verification"
+[2026-03-09T12:15:59.128Z] [INFO] Moving to next page...
+[2026-03-09T12:16:05.270Z] [INFO] 
+--- Page 3 ---
+[2026-03-09T12:16:09.192Z] [INFO] All jobs loaded on page (height: 0px)
+[2026-03-09T12:16:09.196Z] [INFO] Found 25 job listings
+[2026-03-09T12:16:09.730Z] [INFO] 
+--- Applying: React Developer | Remote
+React Developer | Remote at Crossing Hurdles (Unknown Location) ---
+[2026-03-09T12:16:26.352Z] [INFO] Clicked Easy Apply: React Developer | Remote
+React Developer | Remote
+[2026-03-09T12:16:51.830Z] [INFO] Screenshot saved: /Users/nelsonpinto/Desktop/Linkdinauto/linkedin-bot/screenshots/applied_Crossing Hurdles_1773058611758.png
+[2026-03-09T12:16:51.830Z] [INFO] Session total: 1/10
+[2026-03-09T12:16:52.417Z] [INFO] Logged to Sheets: Crossing Hurdles — React Developer | Remote
+React Developer | Remote
+[2026-03-09T12:16:53.033Z] [INFO] Telegram notification sent
+[2026-03-09T12:17:07.012Z] [INFO] Skipping irrelevant: "Software Engineer
+Software Engineer with verification"
+[2026-03-09T12:17:07.573Z] [INFO] 
+--- Applying: Adobe AEM Frontend Developer
+Adobe AEM Frontend Developer with verification at Deloitte (Mumbai, Maharashtra, India (Hybrid)) ---
+[2026-03-09T12:17:25.474Z] [INFO] Clicked Easy Apply: Adobe AEM Frontend Developer
+Adobe AEM Frontend Developer with verification
+[2026-03-09T12:17:42.768Z] [INFO] Screenshot saved: /Users/nelsonpinto/Desktop/Linkdinauto/linkedin-bot/screenshots/applied_Deloitte_1773058662737.png
+[2026-03-09T12:17:42.768Z] [INFO] Session total: 2/10
+[2026-03-09T12:17:43.341Z] [INFO] Logged to Sheets: Deloitte — Adobe AEM Frontend Developer
+Adobe AEM Frontend Developer with verification
+[2026-03-09T12:17:43.951Z] [INFO] Telegram notification sent
