@@ -3,8 +3,8 @@ const { chromium } = require('playwright');
 const fs = require('fs');
 const { getAIAnswer, PROFILE } = require('./ai');
 const { logApplication, isAlreadyApplied, isCompanyAlreadyApplied } = require('./sheets');
-const { notifyJobApplied, notifyError, notifyBotStarted, notifyRunComplete } = require('./telegram');
-const { sleep, log, saveScreenshot, sanitize } = require('./helpers');
+// const { notifyJobApplied, notifyError, notifyBotStarted, notifyRunComplete } = require('./telegram');
+const { sleep, log, sanitize } = require('./helpers');
 const CONFIG = require('./config');
 const failedJobs = new Set();
 
@@ -48,21 +48,43 @@ const loginToLinkedIn = async (page) => {
     return;
   }
 
-  // Wait for login form to be visible
+  // Wait for login form to be visible — try multiple selectors
+  const loginSelectors = ['#username', 'input[name="session_key"]', 'input[autocomplete="username"]', 'input[type="email"]'];
+  let usernameField = null;
   try {
-    await page.waitForSelector('#username', { timeout: 10000, state: 'visible' });
+    for (const sel of loginSelectors) {
+      try {
+        await page.waitForSelector(sel, { timeout: 15000, state: 'visible' });
+        usernameField = sel;
+        break;
+      } catch { continue; }
+    }
+    if (!usernameField) throw new Error('No username field found');
     log('Login form loaded');
   } catch (err) {
-    log(`Login form not found — current URL: ${page.url()}`, 'ERROR');
-    throw new Error('Could not find login form. LinkedIn might have changed or is showing a different page.');
+    // Try reloading once
+    log('Login form not found — reloading page...', 'WARN');
+    await page.reload({ waitUntil: 'domcontentloaded', timeout: 30000 });
+    await sleep(3000, 5000);
+    try {
+      await page.waitForSelector('#username, input[name="session_key"]', { timeout: 15000, state: 'visible' });
+      usernameField = '#username';
+      log('Login form loaded after reload');
+    } catch {
+      log(`Login form not found — current URL: ${page.url()}`, 'ERROR');
+      throw new Error('Could not find login form. LinkedIn might have changed or is showing a different page.');
+    }
   }
 
-  await page.fill('#username', LINKEDIN_EMAIL);
+  await page.fill(usernameField, LINKEDIN_EMAIL);
   await sleep(500, 1000);
-  await page.fill('#password', LINKEDIN_PASSWORD);
+  const passwordSelectors = ['#password', 'input[name="session_password"]', 'input[type="password"]'];
+  for (const sel of passwordSelectors) {
+    try { await page.fill(sel, LINKEDIN_PASSWORD); break; } catch { continue; }
+  }
   await sleep(500, 1000);
   await page.click('button[type="submit"]');
-  await page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 20000 });
+  await page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 30000 }).catch(() => {});
   await sleep(3000, 5000);
 
   const afterUrl = page.url();
@@ -94,12 +116,20 @@ const buildSearchUrl = (keywords, location) => {
 const isJobRelevant = (title) => {
   const t = title.toLowerCase();
 
-  // Check blacklist first
-  const isBlocked = CONFIG.blockedTitles.some(word => t.includes(word));
+  // Check blacklist — word-boundary matching so 'java' doesn't block 'javascript'
+  const isBlocked = CONFIG.blockedTitles.some(word => {
+    const w = word.toLowerCase();
+    const escaped = w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    try {
+      return new RegExp(`(?:^|\\W)${escaped}(?:\\W|$)`).test(t);
+    } catch {
+      return t.includes(w);
+    }
+  });
   if (isBlocked) return false;
 
   // Check whitelist
-  const isAllowed = CONFIG.allowedTitles.some(word => t.includes(word));
+  const isAllowed = CONFIG.allowedTitles.some(word => t.includes(word.toLowerCase()));
   return isAllowed;
 };
 
@@ -181,58 +211,48 @@ const getJobListings = async (page) => {
 // ─────────────────────────────────────────────
 const handleFormField = async (page, field, jobTitle, company) => {
   try {
-    const labelEl = await field.$('label, legend');
-    const questionText = labelEl ? (await labelEl.innerText()).trim() : '';
+    // Try label/legend first, then LinkedIn's span-based labels, then aria-label on the input
+    let questionText = '';
+    const labelEl = await field.$('label, legend, .fb-form-element__label-title, .jobs-easy-apply-form-element__label, span[data-test-form-label]');
+    if (labelEl) {
+      questionText = (await labelEl.innerText()).trim();
+    }
+    if (!questionText) {
+      // Fallback: aria-label on the first interactive element
+      const anyInput = await field.$('select, input, textarea');
+      if (anyInput) questionText = (await anyInput.getAttribute('aria-label') || '').trim();
+    }
     if (!questionText) return;
 
     log(`Field: "${questionText.substring(0, 70)}"`);
 
-    const textInput = await field.$('input[type="text"], input[type="number"], input[type="tel"], input[type="email"], input:not([type])');
-    const textarea = await field.$('textarea');
-    const select = await field.$('select');
+    const dateInput   = await field.$('input[type="date"]');
+    const checkboxes  = await field.$$('input[type="checkbox"]');
     const radioButtons = await field.$$('input[type="radio"]');
+    const select      = await field.$('select');
+    const textarea    = await field.$('textarea');
+    const textInput   = await field.$('input[type="text"], input[type="number"], input[type="tel"], input[type="email"], input:not([type])');
 
-    if (textInput || textarea) {
-      const el = textInput || textarea;
+    if (dateInput) {
+      // ── Date fields ──────────────────────────────────────────
+      const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+      await dateInput.fill(today);
+      await dateInput.dispatchEvent('input');
+      await dateInput.dispatchEvent('change');
+      await sleep(300, 500);
 
-      // Clear and fill regardless of current value
-      const inputType = await el.getAttribute('type');
-      const { answer, aiUsed } = await getAIAnswer(questionText, jobTitle, company);
-      log(`Answer (${aiUsed}): "${answer}"`);
-
-      let finalAnswer = String(answer);
-
-      // Force numeric for number inputs
-      if (inputType === 'number') {
-        const numericMatch = finalAnswer.match(/[\d.]+/);
-        finalAnswer = numericMatch ? numericMatch[0] : String(PROFILE.experienceYears);
-      }
-
-      // Triple click to select all, then use keyboard to type (works better with React forms)
-      await el.click({ clickCount: 3 });
-      await sleep(200, 400);
-      await page.keyboard.press('Control+a');
-      await page.keyboard.press('Backspace');
-      await sleep(100, 200);
-      await el.fill(finalAnswer);
-      await el.dispatchEvent('input');   // Trigger LinkedIn's validation
-      await el.dispatchEvent('change');  // Trigger LinkedIn's validation
-      await sleep(400, 700);
-    } else if (select) {
-      const options = await select.$$eval('option', opts =>
-        opts.map(o => ({ value: o.value, text: o.innerText.trim() })).filter(o => o.value && o.value !== '')
-      );
-      if (options.length > 0) {
-        const { answer } = await getAIAnswer(questionText, jobTitle, company);
-        const answerLower = answer.toLowerCase();
-        const match = options.find(o =>
-          o.text.toLowerCase().includes(answerLower) || answerLower.includes(o.text.toLowerCase())
-        );
-        await select.selectOption(match ? match.value : options[0].value);
-        await sleep(300, 600);
+    } else if (checkboxes.length > 0) {
+      // ── Checkboxes (consent, terms, agreements) ──────────────
+      for (const cb of checkboxes) {
+        const isChecked = await cb.isChecked().catch(() => false);
+        if (!isChecked) {
+          await cb.check().catch(() => cb.click());
+          await sleep(200, 400);
+        }
       }
 
     } else if (radioButtons.length > 0) {
+      // ── Radio buttons ────────────────────────────────────────
       const { answer } = await getAIAnswer(questionText, jobTitle, company);
       const answerLower = answer.toLowerCase();
       let clicked = false;
@@ -241,16 +261,125 @@ const handleFormField = async (page, field, jobTitle, company) => {
         const radioId = await radio.getAttribute('id');
         const radioLabel = radioId ? await page.$(`label[for="${radioId}"]`) : null;
         const labelText = radioLabel ? (await radioLabel.innerText()).toLowerCase() : '';
-
         if (labelText && (labelText.includes(answerLower) || answerLower.includes(labelText))) {
-          await radio.click();
+          // Use JS click to bypass label pointer-event intercept
+          await radio.evaluate(el => el.click());
           clicked = true;
           await sleep(300, 500);
           break;
         }
       }
+      if (!clicked) {
+        await radioButtons[0].evaluate(el => el.click());
+        await sleep(300, 500);
+      }
 
-      if (!clicked) await radioButtons[0].click();
+    } else if (select) {
+      // ── Native <select> dropdowns ────────────────────────────
+      // Skip only if a real (non-placeholder) option is selected
+      const currentSelectVal = await select.inputValue().catch(() => '');
+      if (currentSelectVal && currentSelectVal.trim() !== '') {
+        const selectedText = await select.$eval(
+          'option:checked', el => el.textContent.trim().toLowerCase()
+        ).catch(() => '');
+        const isPlaceholder = !selectedText ||
+          selectedText.includes('select') || selectedText.includes('choose') || selectedText.includes('pick');
+        if (!isPlaceholder) {
+          log(`Skipping pre-filled select: "${questionText.substring(0, 40)}"`);
+          return;
+        }
+      }
+
+      const options = await select.$$eval('option', opts =>
+        opts.map(o => ({ value: o.value, text: o.innerText.trim() })).filter(o => {
+          const t = o.text.toLowerCase();
+          return o.value && o.value !== '' &&
+            !t.includes('select') && !t.includes('choose') && !t.includes('pick') && t !== '';
+        })
+      );
+      if (options.length > 0) {
+        const { answer } = await getAIAnswer(questionText, jobTitle, company);
+        const answerLower = answer.toLowerCase();
+        const match = options.find(o =>
+          o.text.toLowerCase().includes(answerLower) || answerLower.includes(o.text.toLowerCase())
+        );
+        // Default to first real option (not placeholder) if no match found
+        const selectedValue = match ? match.value : options[0].value;
+        log(`Select option: "${match ? match.text : options[0].text}"`);
+        await select.selectOption(selectedValue);
+        // Fire native bubbling events so React/LinkedIn's validation triggers
+        await select.evaluate(el => {
+          el.dispatchEvent(new Event('input',  { bubbles: true, cancelable: true }));
+          el.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
+          el.dispatchEvent(new Event('blur',   { bubbles: true, cancelable: true }));
+        });
+        await sleep(300, 600);
+      }
+
+    } else if (textInput || textarea) {
+      // ── Text / number / textarea ─────────────────────────────
+      const el = textInput || textarea;
+      const inputType = await el.getAttribute('type');
+      const role = await el.getAttribute('role');
+
+      // Skip pre-filled ONLY for personal contact info — not experience/skill/rating fields
+      const qLower = questionText.toLowerCase();
+      const isPersonalInfo = (
+        qLower.includes('first name') || qLower.includes('last name') || qLower.includes('full name') ||
+        qLower.includes('email') || qLower.includes('phone') || qLower.includes('mobile')
+      );
+      const isExperienceOrSkill = (
+        qLower.includes('years') || qLower.includes('experience') || qLower.includes('how many') ||
+        qLower.includes('rate') || qLower.includes('how long') || qLower.includes('how soon') ||
+        qLower.includes('notice') || qLower.includes('salary') || qLower.includes('ctc') || qLower.includes('offer')
+      );
+      if (!textarea && inputType !== 'number' && isPersonalInfo && !isExperienceOrSkill) {
+        const currentValue = await el.inputValue().catch(() => '');
+        if (currentValue && currentValue.trim() !== '') {
+          log(`Skipping pre-filled: "${questionText.substring(0, 40)}" = "${currentValue.substring(0, 30)}"`);
+          return;
+        }
+      }
+
+      // Structured fields (experience/salary/notice/rating) → rules first, AI fallback if no rule matches
+      // Open-ended fields (non-structured, non-personal) → AI reads question and answers from resume
+      // Personal info → rules only (exact values from profile)
+      const useAI = textarea || (!isPersonalInfo && !isExperienceOrSkill);
+      const { answer, aiUsed } = await getAIAnswer(questionText, jobTitle, company, useAI);
+      log(`Answer (${aiUsed}): "${answer}"`);
+
+      let finalAnswer = String(answer);
+
+      if (inputType === 'number') {
+        const numericMatch = finalAnswer.match(/[\d.]+/);
+        finalAnswer = numericMatch ? numericMatch[0] : String(PROFILE.experienceYears);
+      }
+
+      await el.click({ clickCount: 3 });
+      await sleep(200, 400);
+      await page.keyboard.press('Control+a');
+      await page.keyboard.press('Backspace');
+      await sleep(100, 200);
+      await el.fill(finalAnswer);
+      await el.dispatchEvent('input');
+      await el.dispatchEvent('change');
+      await sleep(400, 700);
+
+      // ── Typeahead / combobox — pick first suggestion if it appears ──
+      if (role === 'combobox' || inputType === 'text') {
+        try {
+          const suggestion = await page.waitForSelector(
+            '[role="option"], [role="listbox"] li, .basic-typeahead__selectable',
+            { timeout: 1500 }
+          );
+          if (suggestion) {
+            await suggestion.click();
+            await sleep(300, 500);
+          }
+        } catch {
+          // No dropdown appeared — typed value is fine
+        }
+      }
     }
 
   } catch (err) {
@@ -263,37 +392,21 @@ const handleFormField = async (page, field, jobTitle, company) => {
 // ─────────────────────────────────────────────
 const uncheckFollowCompany = async (page) => {
   try {
-    const checkbox = await page.$(
-      'input[type="checkbox"][name*="follow"], ' +
-      'input[type="checkbox"][id*="follow"], ' +
-      'label:has-text("Follow") input[type="checkbox"]'
-    ).catch(() => null);
-
-    if (checkbox) {
-      const isChecked = await checkbox.isChecked();
-      if (isChecked) {
-        await checkbox.uncheck();
-        log('Unchecked follow company checkbox');
+    // Use JS evaluate to bypass label pointer-event intercept
+    const unchecked = await page.evaluate(() => {
+      const cb =
+        document.querySelector('#follow-company-checkbox') ||
+        document.querySelector('input[type="checkbox"][id*="follow"]') ||
+        document.querySelector('input[type="checkbox"][name*="follow"]');
+      if (cb && cb.checked) {
+        cb.checked = false;
+        cb.dispatchEvent(new Event('change', { bubbles: true }));
+        cb.dispatchEvent(new Event('input',  { bubbles: true }));
+        return true;
       }
-      return;
-    }
-
-    // Fallback: find by label text containing "follow"
-    const labels = await page.$$('label');
-    for (const label of labels) {
-      const text = (await label.innerText()).toLowerCase();
-      if (text.includes('follow')) {
-        const forAttr = await label.getAttribute('for');
-        if (forAttr) {
-          const cb = await page.$(`#${forAttr}`);
-          if (cb && await cb.isChecked()) {
-            await cb.uncheck();
-            log('Unchecked follow company checkbox (by label)');
-          }
-        }
-        break;
-      }
-    }
+      return false;
+    });
+    if (unchecked) log('Unchecked follow company checkbox');
   } catch (err) {
     log(`Could not uncheck follow: ${err.message}`, 'WARN');
   }
@@ -368,17 +481,24 @@ const applyToJob = async (page, job) => {
       await uncheckFollowCompany(page);
       await sleep(500, 800);
       log(`✅ Submitted: ${job.title} at ${job.company}`);
-      await saveScreenshot(page, `applied_${sanitize(job.company)}`);
       return { success: true, aiUsed };
     }
 
     // Fill all fields on current step
     const formGroups = await page.$$(
-      '.jobs-easy-apply-form-section__grouping, .fb-form-element, .jobs-easy-apply-form-element'
+      '.jobs-easy-apply-form-section__grouping, ' +
+      '.fb-form-element, ' +
+      '.jobs-easy-apply-form-element, ' +
+      '[data-test-form-element], ' +
+      '.fb-dash-form-element, ' +
+      '.jobs-easy-apply-form-section__grouping'
     );
     for (const field of formGroups) {
       await handleFormField(page, field, job.title, job.company);
     }
+
+    // Uncheck follow company on every step (it appears on review/final step)
+    await uncheckFollowCompany(page);
 
     await sleep(500, 1000);
 
@@ -392,7 +512,6 @@ const applyToJob = async (page, job) => {
       await sleep(2000, 3000);
       await uncheckFollowCompany(page);
       await sleep(500, 800);
-      await saveScreenshot(page, `applied_${sanitize(job.company)}`);
       return { success: true, aiUsed };
     } else if (reviewBtn) {
       await reviewBtn.click();
@@ -400,6 +519,12 @@ const applyToJob = async (page, job) => {
     } else if (nextBtn) {
       await nextBtn.click();
       await sleep(1500, 2500);
+      // Check for validation errors — if still on same step, stop
+      const hasError = await page.$('.artdeco-inline-feedback--error, [data-test-form-element-error], .fb-form-element__error-text').catch(() => null);
+      if (hasError) {
+        log(`Validation error on step ${stepCount} — cannot advance, marking as failed`, 'WARN');
+        break;
+      }
     } else {
       try {
         await page.click('button:has-text("Submit application")', { timeout: 2000 });
@@ -453,7 +578,7 @@ const run = async () => {
   const allSearches = buildAllSearches();
   log('=== LinkedIn Bot Starting ===');
   log(`Searches: ${allSearches.length} combinations (${CONFIG.jobSearchKeywords.length} keywords × ${CONFIG.jobLocations.length} cities)`);
-  await notifyBotStarted();
+  // await notifyBotStarted();
 
   const sessionExists = fs.existsSync('./session.json');
   const browser = await chromium.launch({ headless: false, slowMo: 80 });
@@ -529,6 +654,18 @@ const run = async () => {
             log(`Job failed/timed out: "${job.title}" — ${applyError.message}`, 'WARN');
             failedJobs.add(job.url);
 
+            // Persist failed job to Sheets so it's skipped in future runs
+            await logApplication({
+              date: new Date().toLocaleDateString('en-IN'),
+              company: job.company,
+              role: job.title,
+              location: job.location,
+              jobUrl: job.url,
+              status: 'Failed',
+              aiUsed: 'N/A',
+              notes: `Failed: ${applyError.message}`,
+            }).catch(() => {});
+
             // Close any open modal before moving to next job
             try {
               const dismissBtn = await page.$('button[aria-label="Dismiss"], button[aria-label="Cancel"]');
@@ -548,6 +685,20 @@ const run = async () => {
             continue; // Move to next job
           }
 
+          if (result && !result.success) {
+            log(`Application unsuccessful: "${job.title}" at ${job.company} — logging as Failed`);
+            await logApplication({
+              date: new Date().toLocaleDateString('en-IN'),
+              company: job.company,
+              role: job.title,
+              location: job.location,
+              jobUrl: job.url,
+              status: 'Failed',
+              aiUsed: result.aiUsed || 'N/A',
+              notes: 'Application did not complete',
+            }).catch(() => {});
+          }
+
           if (result?.success) {
             totalApplied++;
             log(`Session total: ${totalApplied}/${CONFIG.maxApplicationsPerRun}`);
@@ -563,13 +714,13 @@ const run = async () => {
               notes: `${search.keywords} | ${search.location}`,
             });
 
-            await notifyJobApplied({
-              title: job.title,
-              company: job.company,
-              location: job.location,
-              jobUrl: job.url,
-              aiUsed: result.aiUsed,
-            });
+            // await notifyJobApplied({
+            //   title: job.title,
+            //   company: job.company,
+            //   location: job.location,
+            //   jobUrl: job.url,
+            //   aiUsed: result.aiUsed,
+            // });
 
             await sleep(8000, 15000); // Human-like gap
           }
@@ -602,10 +753,9 @@ const run = async () => {
 
   } catch (error) {
     log(`Fatal error: ${error.message}`, 'ERROR');
-    await notifyError(error.message);
-    await saveScreenshot(page, 'error');
+    // await notifyError(error.message);
   } finally {
-    await notifyRunComplete(totalApplied);
+    // await notifyRunComplete(totalApplied);
     await browser.close();
     log(`\n=== Done. Applied to ${totalApplied} jobs this session ===`);
   }

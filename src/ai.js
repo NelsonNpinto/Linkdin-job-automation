@@ -62,6 +62,9 @@ const getRuleBasedAnswer = (question) => {
     q.includes('years of experience') ||
     q.includes('years experience') ||
     q.includes('years of work experience') ||
+    q.includes('years of professional') ||
+    q.includes('professional work experience') ||
+    q.includes('number of years') ||
     q.includes('how many years') ||
     q.includes('how long have you') ||
     (q.includes('experience') && q.includes('with'))
@@ -69,7 +72,14 @@ const getRuleBasedAnswer = (question) => {
     return getExperienceAnswer(question);
   }
 
+  // Name fields — must be before catch-all
+  if (q === 'first name' || q.includes('first name')) return PROFILE.name.split(' ')[0];
+  if (q === 'last name'  || q.includes('last name'))  return PROFILE.name.split(' ').slice(-1)[0];
+  if (q === 'full name'  || q.includes('full name'))  return PROFILE.name;
+
   // Contact / personal info
+  if (q.includes('email')) return process.env.LINKEDIN_EMAIL || '';
+  if (q.includes('phone country code') || q.includes('country code')) return 'India (+91)';
   if (q.includes('phone') || q.includes('mobile') || q.includes('contact number')) {
     return process.env.PHONE_NUMBER || PROFILE.phone || '';
   }
@@ -80,6 +90,32 @@ const getRuleBasedAnswer = (question) => {
   if (q.includes('country')) return PROFILE.country;
   if (q.includes('pin code') || q.includes('zip') || q.includes('postal')) return PROFILE.pinCode;
 
+  // Consent / privacy policy agreement
+  if (
+    q.includes('privacy policy') ||
+    q.includes('data processing') ||
+    q.includes('by clicking') ||
+    q.includes('agree to our') ||
+    q.includes('i agree') ||
+    q.includes('accurate information') ||
+    (q.includes('agree') && q.includes('policy'))
+  ) return 'Yes';
+
+  // Citizenship / nationality
+  if (q.includes('indian citizen') || q.includes('citizen of india') || q.includes('are you a citizen')) return 'Yes';
+
+  // Location acceptance
+  if (
+    (q.includes('ok with') && q.includes('location')) ||
+    (q.includes('okay with') && q.includes('location')) ||
+    q.includes('specified job location') ||
+    q.includes('comfortable with the location') ||
+    (q.includes('location') && q.includes('relocation'))
+  ) return 'Yes';
+
+  // Preferred work location
+  if (q.includes('preferred location') || q.includes('preferred work location') || q.includes('location to work')) return PROFILE.city;
+
   // Work authorization
   if (q.includes('authorized to work') || q.includes('work authorization') || q.includes('legally authorized')) return 'Yes';
   if (q.includes('require') && q.includes('sponsorship')) return 'No';
@@ -87,21 +123,30 @@ const getRuleBasedAnswer = (question) => {
   if (q.includes('work permit')) return 'Yes';
 
   // Salary & notice — always return as decimal numbers
-  if (q.includes('expected salary') || q.includes('salary expectation') || q.includes('desired salary') || q.includes('expected ctc')) {
+  if (q.includes('expected salary') || q.includes('salary expectation') || q.includes('desired salary') ||
+      q.includes('expected ctc') || q.includes('salary range') || q.includes('annual salary') ||
+      q.includes('salary expectations') || q.includes('what is your salary') || q.includes('ctc expectation')) {
     return String(PROFILE.expectedSalary);
   }
-  if (q.includes('current salary') || q.includes('current ctc') || q.includes('current compensation')) {
+  if (q.includes('current salary') || q.includes('current ctc') || q.includes('current compensation') ||
+      (q.includes('current') && q.includes('ctc')) || (q.includes('current') && q.includes('salary'))) {
     return String(PROFILE.currentSalary);
   }
-  if (q.includes('notice period') || q.includes('notice (in days)') || q.includes('notice(days)') || q.includes('days is your notice')) {
+  if (
+    q.includes('notice period') || q.includes('notice (in days)') || q.includes('notice(days)') ||
+    q.includes('days is your notice') || q.includes('how soon can you') || q.includes('when can you join') ||
+    q.includes('available to join') || q.includes('available to start') || q.includes('joining time') ||
+    q.includes('when are you available') || (q.includes('join') && q.includes('days'))
+  ) {
     return String(PROFILE.noticePeriodDays);
   }
 
-  // Remote / relocation
+  // Remote / relocation / commuting
   if (q.includes('willing to relocate') || q.includes('open to relocation')) return PROFILE.willingToRelocate;
   if (q.includes('remote') && (q.includes('work') || q.includes('comfortable') || q.includes('open'))) return 'Yes';
   if (q.includes('work from home') || q.includes('wfh')) return 'Yes';
   if (q.includes('hybrid')) return 'Yes';
+  if (q.includes('commut') || q.includes('onsite') || q.includes('on-site') || q.includes('on site')) return 'Yes';
 
   // Skills / tools
   if (q.includes('familiar with') || q.includes('experience with') || q.includes('worked with')) return 'Yes';
@@ -127,6 +172,14 @@ const getRuleBasedAnswer = (question) => {
   }
   if (q.includes('github')) return PROFILE.githubUrl || '';
 
+  // Offer / competing offers
+  if (q.includes('offer in hand') || q.includes('offer amount') || q.includes('competing offer') || q.includes('other offer')) return 'No';
+
+  // Ratings out of 10 — return a confident number
+  if ((q.includes('rate') || q.includes('rating') || q.includes('score')) &&
+      (q.includes('out of 10') || q.includes('/10') || q.includes('out of ten'))) return '8';
+  if (q.includes('rate') && (q.includes('skill') || q.includes('proficiency') || q.includes('expertise'))) return '8';
+
   // Generic yes/no
   if (q.includes('are you available') || q.includes('immediately available')) return 'Yes';
   if (q.includes('full time') || q.includes('full-time')) return 'Yes';
@@ -135,28 +188,61 @@ const getRuleBasedAnswer = (question) => {
   if (q.includes('18 years') || q.includes('above 18')) return 'Yes';
   if (q.includes('currently employed')) return 'Yes';
 
-  return null; // Needs AI
+  // ── Smart keyword fallback (no AI needed) ──────────────────
+  // Experience / years keywords → return experience years
+  if (
+    q.includes('experience') ||
+    q.includes('work exp') ||
+    q.includes('years') ||
+    q.includes('how long') ||
+    q.includes('duration')
+  ) {
+    return String(PROFILE.experienceYears);
+  }
+
+  // Location / city / address keywords → return city
+  if (
+    q.includes('location') ||
+    q.includes('city') ||
+    q.includes('place') ||
+    q.includes('address') ||
+    q.includes('where') ||
+    q.includes('based')
+  ) {
+    return PROFILE.city;
+  }
+
+  // Default → Yes (covers any remaining yes/no or consent questions)
+  return 'Yes';
 };
 
 // ─────────────────────────────────────────────
 // BUILD AI PROMPT
 // ─────────────────────────────────────────────
 const buildPrompt = (question, jobTitle, company) => `
-You are helping ${PROFILE.name} apply for a "${jobTitle}" role at "${company}".
+You are filling out a job application on behalf of ${PROFILE.name} for a "${jobTitle}" role at "${company}".
 
-Profile:
-- Role: ${PROFILE.currentRole} with ${PROFILE.experienceYears} years experience
-- Skills: React Native, React.js, Node.js, TypeScript, MongoDB, AWS, FastAPI
-- Location: ${PROFILE.city}, ${PROFILE.country}
-- Education: ${PROFILE.education}
-- Work preference: ${PROFILE.workPreference}
+=== RESUME ===
+${PROFILE.resumeSummary}
+
+=== ADDITIONAL DETAILS ===
+- Current city: ${PROFILE.city}, ${PROFILE.country}
 - Notice period: ${PROFILE.noticePeriodDays} days
+- Expected salary: ${PROFILE.expectedSalary} LPA
+- Work preference: ${PROFILE.workPreference}
+- Authorized to work in India: ${PROFILE.authorizedToWork}
+- Require sponsorship: ${PROFILE.requireSponsorship}
+- Portfolio: ${PROFILE.portfolioUrl}
+- GitHub: ${PROFILE.githubUrl}
+- LinkedIn: ${PROFILE.linkedinUrl}
 
-Rules:
+=== RULES ===
 - Yes/No questions: reply ONLY "Yes" or "No"
-- Number/experience questions: reply ONLY the number or "X years Y months"
-- Short text: max 2 sentences, first person, professional
+- Number questions: reply ONLY the number (no units)
+- Short text fields: max 2 sentences, first person, professional, based on the resume above
+- Long text / cover letter: 3–4 sentences max, highlight relevant experience from the resume
 - Never say you are an AI
+- Never make up experience not in the resume
 
 Question: "${question}"
 Answer:`.trim();
@@ -186,7 +272,7 @@ const askGemini = async (question, jobTitle, company) => {
 // ─────────────────────────────────────────────
 // MAIN — Cache → Rules → Groq → Gemini → Fallback
 // ─────────────────────────────────────────────
-const getAIAnswer = async (question, jobTitle = 'React Native Developer', company = 'the company') => {
+const getAIAnswer = async (question, jobTitle = 'React Native Developer', company = 'the company', skipRules = false) => {
   const cacheKey = question.toLowerCase().trim();
 
   // 1. Cache
@@ -195,12 +281,14 @@ const getAIAnswer = async (question, jobTitle = 'React Native Developer', compan
     return { answer: answerCache.get(cacheKey), aiUsed: 'Cache' };
   }
 
-  // 2. Rules
-  const ruleAnswer = getRuleBasedAnswer(question);
-  if (ruleAnswer !== null && ruleAnswer !== '') {
-    log(`Rule match: "${question.substring(0, 50)}" → "${ruleAnswer}"`);
-    answerCache.set(cacheKey, ruleAnswer);
-    return { answer: ruleAnswer, aiUsed: 'Rules' };
+  // 2. Rules (skipped for open-ended textarea fields)
+  if (!skipRules) {
+    const ruleAnswer = getRuleBasedAnswer(question);
+    if (ruleAnswer !== null && ruleAnswer !== '') {
+      log(`Rule match: "${question.substring(0, 50)}" → "${ruleAnswer}"`);
+      answerCache.set(cacheKey, ruleAnswer);
+      return { answer: ruleAnswer, aiUsed: 'Rules' };
+    }
   }
 
   // 3. Groq
