@@ -40,18 +40,29 @@ module.exports = {
     'react-native',
     'mobile developer',
     'mobile engineer',
+    'mobile application',
+    'app developer',
     'ios developer',
     'android developer',
     'cross platform',
     'cross-platform',
     'ai engineer',
     'gen ai developer',
-      'react developer',      // ← add this
-  'react engineer',       // ← add this
-  'frontend developer',   // ← add this
-  'front-end developer',  // ← add this
-  'mern', 
-
+    'gen ai engineer',
+    'react developer',
+    'react engineer',
+    'frontend developer',
+    'front-end developer',
+    'frontend engineer',
+    'front-end engineer',
+    'software engineer',
+    'fullstack',
+    'full stack',
+    'full-stack',
+    'javascript',
+    'web developer',
+    'programmer',
+    'mern',
   ],
 
   // ─────────────────────────────────────────────
@@ -59,21 +70,23 @@ module.exports = {
   // Bot will SKIP if job title contains any of these
   // ─────────────────────────────────────────────
   blockedTitles: [
+    '/$',
     'salesforce',
-    // 'java',
-    // 'blockchain',
-    // 'wordpress',
-    // 'php',
-    // 'ruby',
-    // 'c++',
-    // 'c software',
-    // 'vue',
-    // 'devops',
-    // 'data engineer',
-    // 'machine learning',
-    // 'qa engineer',
-    // 'test engineer',
-    // 'astrology',
+    'java',
+    'blockchain',
+    'wordpress',
+    'php',
+    'ruby',
+    'c++',
+    'c software',
+    'vue',
+    'devops',
+    'data engineer',
+    'machine learning',
+    'qa engineer',
+    'test engineer',
+    'astrology',
+    'Go'
 
   ],
 

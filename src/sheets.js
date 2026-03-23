@@ -54,4 +54,24 @@ const isAlreadyApplied = async (jobUrl) => {
   }
 };
 
-module.exports = { logApplication, isAlreadyApplied };
+// Check if a company was already applied to (avoid same company)
+const isCompanyAlreadyApplied = async (company) => {
+  if (!company) return false;
+  try {
+    const authClient = await getAuthClient();
+    const sheets = google.sheets({ version: 'v4', auth: authClient });
+
+    const res = await sheets.spreadsheets.values.get({
+      spreadsheetId: SHEET_ID,
+      range: 'Sheet1!B:B', // Company column
+    });
+
+    const companies = (res.data.values || []).flat().map(c => c.toLowerCase().trim());
+    return companies.includes(company.toLowerCase().trim());
+  } catch (error) {
+    log(`Sheets company check error: ${error.message}`, 'ERROR');
+    return false;
+  }
+};
+
+module.exports = { logApplication, isAlreadyApplied, isCompanyAlreadyApplied };

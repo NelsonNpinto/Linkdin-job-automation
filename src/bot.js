@@ -2,7 +2,7 @@ require('dotenv').config();
 const { chromium } = require('playwright');
 const fs = require('fs');
 const { getAIAnswer, PROFILE } = require('./ai');
-const { logApplication, isAlreadyApplied } = require('./sheets');
+const { logApplication, isAlreadyApplied, isCompanyAlreadyApplied } = require('./sheets');
 const { notifyJobApplied, notifyError, notifyBotStarted, notifyRunComplete } = require('./telegram');
 const { sleep, log, saveScreenshot, sanitize } = require('./helpers');
 const CONFIG = require('./config');
@@ -496,10 +496,17 @@ const run = async () => {
             continue;
           }
 
-          // Duplicate check
+          // Duplicate check (URL)
           const alreadyDone = await isAlreadyApplied(job.url);
           if (alreadyDone) {
             log(`Already applied: "${job.title}" — skipping`);
+            continue;
+          }
+
+          // Duplicate check (Company)
+          const companyDone = await isCompanyAlreadyApplied(job.company);
+          if (companyDone) {
+            log(`Already applied to company: "${job.company}" — skipping`);
             continue;
           }
 
