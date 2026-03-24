@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinkedIn Auto Apply</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      background: #0077b5;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #555;
+      margin-bottom: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 6px;
+    }
+
+    input {
+      width: 100%;
+      background: #111;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 14px;
+      color: #e0e0e0;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input:focus {
+      border-color: #0077b5;
+    }
+
+    input::placeholder {
+      color: #444;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 13px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: #0077b5;
+      color: #fff;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: #006097;
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn-secondary {
+      background: #1a1a1a;
+      color: #888;
+      border: 1px solid #2a2a2a;
+      margin-top: 8px;
+    }
+
+    .btn-secondary:hover {
+      background: #222;
+    }
+
+    .status-card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 20px 24px;
+      display: none;
+    }
+
+    .status-card.visible { display: block; }
+
+    .status-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .status-dot.idle     { background: #444; }
+    .status-dot.running  { background: #f59e0b; animation: pulse 1.2s infinite; }
+    .status-dot.success  { background: #22c55e; }
+    .status-dot.failure  { background: #ef4444; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .status-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .status-meta {
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .log-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #0077b5;
+      text-decoration: none;
+    }
+
+    .log-link:hover { text-decoration: underline; }
+
+    .divider {
+      height: 1px;
+      background: #2a2a2a;
+      margin: 14px 0;
+    }
+
+    .history {
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .history-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #1f1f1f;
+      font-size: 13px;
+    }
+
+    .history-item:last-child { border-bottom: none; }
+
+    .history-status {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .history-status.success  { background: #14532d; color: #22c55e; }
+    .history-status.failure  { background: #450a0a; color: #ef4444; }
+    .history-status.running  { background: #431407; color: #f59e0b; }
+    .history-status.cancelled { background: #1c1c1c; color: #666; }
+
+    .error-msg {
+      background: #1a0808;
+      border: 1px solid #3d1515;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: #f87171;
+      margin-top: 12px;
+      display: none;
+    }
+
+    .error-msg.visible { display: block; }
+
+    .settings-toggle {
+      font-size: 12px;
+      color: #555;
+      cursor: pointer;
+      text-align: center;
+      margin-top: 8px;
+      padding: 4px;
+    }
+
+    .settings-toggle:hover { color: #888; }
+
+    .pat-section {
+      display: none;
+    }
+
+    .pat-section.visible { display: block; }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      background: #0c2a3d;
+      color: #38bdf8;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="header">
+      <div class="logo">in</div>
+      <h1>LinkedIn Auto Apply <span class="badge">Bot</span></h1>
+      <p class="subtitle">Automatically applies to jobs on your behalf</p>
+    </div>
+
+    <!-- Credentials Card -->
+    <div class="card">
+      <div class="card-title">LinkedIn Credentials</div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="your@email.com" />
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Enter password" />
+      </div>
+
+      <button class="btn btn-primary" id="startBtn" onclick="startBot()">
+        Start Auto Apply
+      </button>
+
+      <div class="error-msg" id="errorMsg"></div>
+
+      <div class="settings-toggle" onclick="toggleSettings()">
+        GitHub Settings
+      </div>
+
+      <div class="pat-section" id="patSection">
+        <div class="divider"></div>
+        <div class="form-group">
+          <label>GitHub Repository (owner/repo)</label>
+          <input type="text" id="repo" placeholder="NelsonNpinto/Linkdin-job-automation" />
+        </div>
+        <div class="form-group">
+          <label>GitHub Personal Access Token</label>
+          <input type="password" id="pat" placeholder="ghp_xxxxxxxxxxxx" />
+        </div>
+        <button class="btn btn-secondary" onclick="saveSettings()">Save Settings</button>
+      </div>
+    </div>
+
+    <!-- Status Card -->
+    <div class="status-card" id="statusCard">
+      <div class="card-title">Current Run</div>
+      <div class="status-header">
+        <div class="status-dot idle" id="statusDot"></div>
+        <div class="status-label" id="statusLabel">Idle</div>
+      </div>
+      <div class="status-meta" id="statusMeta"></div>
+      <a class="log-link" id="logLink" href="#" target="_blank" style="display:none">
+        View logs on GitHub
+      </a>
+
+      <div class="divider"></div>
+
+      <div class="card-title">Recent Runs</div>
+      <div class="history" id="history">
+        <div style="font-size:13px; color:#444; text-align:center; padding:16px 0;">No runs yet</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const WORKFLOW_FILE = 'run-bot.yml';
+    let pollInterval = null;
+    let currentRunId = null;
+
+    window.onload = () => {
+      const repo = localStorage.getItem('gh_repo');
+      const pat  = localStorage.getItem('gh_pat');
+      const email = localStorage.getItem('li_email');
+
+      if (repo) document.getElementById('repo').value = repo;
+      if (pat)  document.getElementById('pat').value  = pat;
+      if (email) document.getElementById('email').value = email;
+
+      if (!repo || !pat) toggleSettings();
+      else loadHistory();
+    };
+
+    function toggleSettings() {
+      document.getElementById('patSection').classList.toggle('visible');
+    }
+
+    function saveSettings() {
+      const repo = document.getElementById('repo').value.trim();
+      const pat  = document.getElementById('pat').value.trim();
+      if (!repo || !pat) return showError('Enter both repo and PAT');
+      localStorage.setItem('gh_repo', repo);
+      localStorage.setItem('gh_pat', pat);
+      toggleSettings();
+      showError('');
+      loadHistory();
+    }
+
+    async function startBot() {
+      const email    = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const repo     = localStorage.getItem('gh_repo');
+      const pat      = localStorage.getItem('gh_pat');
+
+      if (!email || !password) return showError('Enter your LinkedIn email and password');
+      if (!repo || !pat) { toggleSettings(); return showError('Set your GitHub repo and PAT first'); }
+
+      localStorage.setItem('li_email', email);
+
+      const btn = document.getElementById('startBtn');
+      btn.disabled = true;
+      btn.textContent = 'Triggering...';
+      showError('');
+
+      try {
+        const res = await fetch(
+          `https://api.github.com/repos/${repo}/actions/workflows/${WORKFLOW_FILE}/dispatches`,
+          {
+            method: 'POST',
+            headers: {
+              Authorization: `token ${pat}`,
+              Accept: 'application/vnd.github+json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              ref: 'main',
+              inputs: { email, password },
+            }),
+          }
+        );
+
+        if (res.status === 204) {
+          btn.textContent = 'Triggered! Waiting...';
+          setTimeout(() => pollLatestRun(), 3000);
+        } else {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.message || `HTTP ${res.status}`);
+        }
+      } catch (e) {
+        showError('Error: ' + e.message);
+        btn.disabled = false;
+        btn.textContent = 'Start Auto Apply';
+      }
+    }
+
+    async function pollLatestRun() {
+      const repo = localStorage.getItem('gh_repo');
+      const pat  = localStorage.getItem('gh_pat');
+      if (!repo || !pat) return;
+
+      try {
+        const res = await fetch(
+          `https://api.github.com/repos/${repo}/actions/workflows/${WORKFLOW_FILE}/runs?per_page=1`,
+          { headers: { Authorization: `token ${pat}`, Accept: 'application/vnd.github+json' } }
+        );
+        const data = await res.json();
+        const run = data.workflow_runs?.[0];
+        if (!run) return;
+
+        currentRunId = run.id;
+        updateStatus(run);
+        showStatusCard();
+
+        if (run.status === 'in_progress' || run.status === 'queued' || run.status === 'waiting') {
+          clearInterval(pollInterval);
+          pollInterval = setInterval(() => pollRun(run.id), 8000);
+        } else {
+          resetBtn();
+          loadHistory();
+        }
+      } catch (e) {
+        console.error(e);
+        resetBtn();
+      }
+    }
+
+    async function pollRun(runId) {
+      const repo = localStorage.getItem('gh_repo');
+      const pat  = localStorage.getItem('gh_pat');
+
+      try {
+        const res = await fetch(
+          `https://api.github.com/repos/${repo}/actions/runs/${runId}`,
+          { headers: { Authorization: `token ${pat}`, Accept: 'application/vnd.github+json' } }
+        );
+        const run = await res.json();
+        updateStatus(run);
+
+        if (run.status !== 'in_progress' && run.status !== 'queued' && run.status !== 'waiting') {
+          clearInterval(pollInterval);
+          resetBtn();
+          loadHistory();
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    function updateStatus(run) {
+      const dot   = document.getElementById('statusDot');
+      const label = document.getElementById('statusLabel');
+      const meta  = document.getElementById('statusMeta');
+      const link  = document.getElementById('logLink');
+
+      dot.className = 'status-dot';
+      const started = new Date(run.created_at).toLocaleString();
+
+      if (run.status === 'queued' || run.status === 'waiting') {
+        dot.classList.add('running');
+        label.textContent = 'Queued';
+        meta.textContent = `Started at ${started}`;
+      } else if (run.status === 'in_progress') {
+        dot.classList.add('running');
+        label.textContent = 'Running...';
+        meta.textContent = `Started at ${started}\nApplying to jobs now...`;
+      } else if (run.conclusion === 'success') {
+        dot.classList.add('success');
+        label.textContent = 'Completed';
+        const dur = Math.round((new Date(run.updated_at) - new Date(run.created_at)) / 60000);
+        meta.textContent = `Finished at ${new Date(run.updated_at).toLocaleString()} (${dur} min)`;
+      } else if (run.conclusion === 'failure') {
+        dot.classList.add('failure');
+        label.textContent = 'Failed';
+        meta.textContent = `Failed at ${new Date(run.updated_at).toLocaleString()}`;
+      } else {
+        dot.classList.add('idle');
+        label.textContent = run.conclusion || run.status;
+        meta.textContent = '';
+      }
+
+      link.href = run.html_url;
+      link.style.display = 'inline-flex';
+    }
+
+    async function loadHistory() {
+      const repo = localStorage.getItem('gh_repo');
+      const pat  = localStorage.getItem('gh_pat');
+      if (!repo || !pat) return;
+
+      showStatusCard();
+
+      try {
+        const res = await fetch(
+          `https://api.github.com/repos/${repo}/actions/workflows/${WORKFLOW_FILE}/runs?per_page=8`,
+          { headers: { Authorization: `token ${pat}`, Accept: 'application/vnd.github+json' } }
+        );
+        const data = await res.json();
+        const runs = data.workflow_runs || [];
+
+        const container = document.getElementById('history');
+        if (!runs.length) {
+          container.innerHTML = '<div style="font-size:13px;color:#444;text-align:center;padding:16px 0">No runs yet</div>';
+          return;
+        }
+
+        container.innerHTML = runs.map(r => {
+          const status = r.conclusion || r.status;
+          const date = new Date(r.created_at).toLocaleDateString('en-IN', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+          return `
+            <div class="history-item">
+              <span style="color:#aaa">${date}</span>
+              <a href="${r.html_url}" target="_blank" class="history-status ${statusClass(status)}">${statusText(status)}</a>
+            </div>`;
+        }).join('');
+
+        if (runs[0]) updateStatus(runs[0]);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    function statusClass(s) {
+      if (s === 'success') return 'success';
+      if (s === 'failure') return 'failure';
+      if (s === 'in_progress' || s === 'queued') return 'running';
+      return 'cancelled';
+    }
+
+    function statusText(s) {
+      const map = { success: 'Done', failure: 'Failed', in_progress: 'Running', queued: 'Queued', cancelled: 'Cancelled' };
+      return map[s] || s;
+    }
+
+    function showStatusCard() {
+      document.getElementById('statusCard').classList.add('visible');
+    }
+
+    function showError(msg) {
+      const el = document.getElementById('errorMsg');
+      el.textContent = msg;
+      el.classList.toggle('visible', !!msg);
+    }
+
+    function resetBtn() {
+      const btn = document.getElementById('startBtn');
+      btn.disabled = false;
+      btn.textContent = 'Start Auto Apply';
+    }
+  </script>
+</body>
+</html>
