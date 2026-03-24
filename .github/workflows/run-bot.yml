@@ -1,0 +1,69 @@
+name: LinkedIn Auto Apply Bot
+
+on:
+  workflow_dispatch:
+    inputs:
+      email:
+        description: 'LinkedIn Email'
+        required: true
+        type: string
+      password:
+        description: 'LinkedIn Password'
+        required: true
+        type: string
+
+  schedule:
+    - cron: '30 3 * * *'   # 9:00 AM IST daily
+    - cron: '30 8 * * *'   # 2:00 PM IST daily
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install chromium --with-deps
+
+      - name: Restore Google credentials
+        run: echo "${{ secrets.GOOGLE_CREDENTIALS_JSON }}" | base64 -d > credentials.json
+
+      - name: Run LinkedIn bot
+        env:
+          LINKEDIN_EMAIL: ${{ github.event.inputs.email || secrets.LINKEDIN_EMAIL }}
+          LINKEDIN_PASSWORD: ${{ github.event.inputs.password || secrets.LINKEDIN_PASSWORD }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_PATH: ./credentials.json
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: npm start
+
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bot-logs-${{ github.run_id }}
+          path: logs/
+          retention-days: 7
+
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bot-screenshots-${{ github.run_id }}
+          path: screenshots/
+          retention-days: 7
