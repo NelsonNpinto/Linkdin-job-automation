@@ -1,0 +1,254 @@
+{
+  "displayName": "nelson",
+  "linkedinEmail": "nelsonpaitechture@gmail.com",
+  "linkedinPassword": "asas",
+  "profile": {
+    "name": "Nelson Pinto",
+    "currentRole": "",
+    "experienceYears": 2,
+    "phone": "09881865176",
+    "city": "Madhya Pradesh",
+    "state": "Madhya Pradesh",
+    "country": "India",
+    "pinCode": "421005",
+    "noticePeriodDays": 30,
+    "expectedSalary": "",
+    "currentSalary": "",
+    "workPreference": "Hybrid",
+    "willingToRelocate": "Yes",
+    "authorizedToWork": "Yes",
+    "requireSponsorship": "No",
+    "education": "",
+    "languages": "English",
+    "linkedinUrl": "",
+    "portfolioUrl": "",
+    "githubUrl": "",
+    "gender": "Male",
+    "veteran": "No",
+    "disability": "No",
+    "resumeSummary": "",
+    "skillExperience": {
+      "react native": {
+        "years": 2,
+        "months": 0
+      },
+      "react": {
+        "years": 2,
+        "months": 0
+      },
+      "reactjs": {
+        "years": 2,
+        "months": 0
+      },
+      "react.js": {
+        "years": 2,
+        "months": 0
+      },
+      "javascript": {
+        "years": 2,
+        "months": 0
+      },
+      "typescript": {
+        "years": 2,
+        "months": 0
+      },
+      "node": {
+        "years": 2,
+        "months": 0
+      },
+      "node.js": {
+        "years": 2,
+        "months": 0
+      },
+      "nodejs": {
+        "years": 2,
+        "months": 0
+      },
+      "python": {
+        "years": 2,
+        "months": 0
+      },
+      "aws": {
+        "years": 2,
+        "months": 0
+      },
+      "mongodb": {
+        "years": 2,
+        "months": 0
+      },
+      "firebase": {
+        "years": 2,
+        "months": 0
+      },
+      "redux": {
+        "years": 2,
+        "months": 0
+      },
+      "html": {
+        "years": 2,
+        "months": 0
+      },
+      "html5": {
+        "years": 2,
+        "months": 0
+      },
+      "css": {
+        "years": 2,
+        "months": 0
+      },
+      "css3": {
+        "years": 2,
+        "months": 0
+      },
+      "next.js": {
+        "years": 2,
+        "months": 0
+      },
+      "nextjs": {
+        "years": 2,
+        "months": 0
+      },
+      "express": {
+        "years": 2,
+        "months": 0
+      },
+      "express.js": {
+        "years": 2,
+        "months": 0
+      },
+      "graphql": {
+        "years": 2,
+        "months": 0
+      },
+      "docker": {
+        "years": 2,
+        "months": 0
+      },
+      "sql": {
+        "years": 2,
+        "months": 0
+      },
+      "postgresql": {
+        "years": 2,
+        "months": 0
+      },
+      "postgres": {
+        "years": 2,
+        "months": 0
+      },
+      "mysql": {
+        "years": 2,
+        "months": 0
+      },
+      "tailwind": {
+        "years": 2,
+        "months": 0
+      },
+      "tailwindcss": {
+        "years": 2,
+        "months": 0
+      },
+      "git": {
+        "years": 2,
+        "months": 0
+      },
+      "github": {
+        "years": 2,
+        "months": 0
+      },
+      "rest api": {
+        "years": 2,
+        "months": 0
+      },
+      "rest apis": {
+        "years": 2,
+        "months": 0
+      },
+      "restful": {
+        "years": 2,
+        "months": 0
+      },
+      "ios": {
+        "years": 2,
+        "months": 0
+      },
+      "android": {
+        "years": 2,
+        "months": 0
+      },
+      "flutter": {
+        "years": 2,
+        "months": 0
+      },
+      "vue": {
+        "years": 2,
+        "months": 0
+      },
+      "angular": {
+        "years": 2,
+        "months": 0
+      },
+      "fastapi": {
+        "years": 2,
+        "months": 0
+      },
+      "openai": {
+        "years": 2,
+        "months": 0
+      },
+      "gen ai": {
+        "years": 2,
+        "months": 0
+      },
+      "ai": {
+        "years": 2,
+        "months": 0
+      },
+      "jest": {
+        "years": 2,
+        "months": 0
+      },
+      "ci/cd": {
+        "years": 2,
+        "months": 0
+      },
+      "jira": {
+        "years": 2,
+        "months": 0
+      },
+      "figma": {
+        "years": 2,
+        "months": 0
+      },
+      "material ui": {
+        "years": 2,
+        "months": 0
+      },
+      "google cloud": {
+        "years": 2,
+        "months": 0
+      },
+      "gcp": {
+        "years": 2,
+        "months": 0
+      },
+      "saas": {
+        "years": 2,
+        "months": 0
+      },
+      "mern": {
+        "years": 2,
+        "months": 0
+      },
+      "fullstack": {
+        "years": 2,
+        "months": 0
+      },
+      "full stack": {
+        "years": 2,
+        "months": 0
+      }
+    }
+  },
+  "userId": "123123"
+}

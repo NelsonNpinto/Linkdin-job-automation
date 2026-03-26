@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    background: linear-gradient(to bottom, #000000, #1c1c1e);
+    color: #f5f5f7;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Apple-style scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+    background-clip: padding-box;
+  }
+}
+
+@layer components {
+  /* Apple-style glass card */
+  .glass-card {
+    background: rgba(28, 28, 30, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Apple-style button */
+  .btn-apple {
+    @apply px-6 py-3 rounded-full font-medium transition-all duration-200;
+    @apply hover:scale-105 active:scale-95;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-apple-primary {
+    @apply btn-apple bg-apple-blue text-white;
+    @apply hover:bg-opacity-90;
+  }
+
+  .btn-apple-secondary {
+    @apply btn-apple bg-apple-elevated text-apple-gray-100;
+    @apply hover:bg-apple-gray-800;
+  }
+
+  /* Apple-style input */
+  .input-apple {
+    @apply w-full bg-apple-elevated border border-apple-border rounded-xl px-4 py-3;
+    @apply text-apple-gray-100 placeholder-apple-gray-500;
+    @apply focus:outline-none focus:ring-2 focus:ring-apple-blue focus:border-transparent;
+    @apply transition-all duration-200;
+  }
+
+  /* Terminal styling */
+  .terminal {
+    font-family: 'SF Mono', 'Monaco', 'Menlo', 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+  }
+
+  /* Smooth transitions */
+  .transition-apple {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer utilities {
+  /* Log colors */
+  .log-info { color: #8e8e93; }
+  .log-error { color: #ff453a; }
+  .log-warn { color: #ff9f0a; }
+  .log-success { color: #30d158; }
+
+  /* Responsive text sizes */
+  .text-responsive-xs { @apply text-xs sm:text-sm; }
+  .text-responsive-sm { @apply text-sm sm:text-base; }
+  .text-responsive-base { @apply text-base sm:text-lg; }
+  .text-responsive-lg { @apply text-lg sm:text-xl; }
+  .text-responsive-xl { @apply text-xl sm:text-2xl; }
+  .text-responsive-2xl { @apply text-2xl sm:text-3xl lg:text-4xl; }
+
+  /* Responsive padding */
+  .p-responsive { @apply p-4 sm:p-6 lg:p-8; }
+  .px-responsive { @apply px-4 sm:px-6 lg:px-8; }
+  .py-responsive { @apply py-4 sm:py-6 lg:py-8; }
+}
